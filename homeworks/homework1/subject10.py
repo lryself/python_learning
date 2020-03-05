@@ -12,12 +12,12 @@
 
 # here put the import lib
 # text="One is always on a strange road, watching strange scenery and listeningto strange music. Then one day, you will find that the things you tryhard to forget are already gone."
-text=input("请输入一段英文文本：\n")
-texts1=list(text.split(" "))
-texts2={}
+text = input("请输入一段英文文本：\n")
+texts1 = list(text.split(" "))
+texts2 = {}
 for i in texts1:
-  if texts2.get(i, 0) == 0:
-    texts2[i]=1;
-  else:
-    texts2[i]=texts2[i]+1;
-print(sorted(texts2.items(),key=lambda x:x[1],reverse=True))
+    if texts2.get(i, 0) == 0:
+        texts2[i] = 1
+    else:
+        texts2[i] = texts2[i] + 1
+print(sorted(texts2.items(), key=lambda x: x[1], reverse=True))
