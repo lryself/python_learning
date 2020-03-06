@@ -1,4 +1,11 @@
-
+# -*- encoding: utf-8 -*-
+"""
+@File : subject1,
+@Time : 2020/3/4 19:54
+@Author : lryself
+@Version : 1.0
+@Contact : lnolvwe@163.com
+"""
 '''题目：使用random模块，生成随机数，来初始化一个列表，元组；
 '''
 

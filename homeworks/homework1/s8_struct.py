@@ -9,12 +9,9 @@
 """
 题目：设计一个数据结构，用来存放10个员工的信息并初始化，每个员工信息包括：工号，姓名，工龄，工资； 将这10个员工，按照工资从高到低打印输出；
 """
+import random
 # here put the import lib
 
-
-
-
-import random
 class Staff:
     def __init__(self, a, b, c, d):
         self.id = a

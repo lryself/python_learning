@@ -7,7 +7,7 @@
 @Contact : lnolvwe@163.com
 """
 """
-题目：
+题目：元素输出和查找： 请输出0-50之间的奇数，偶数，质数；能同时被2和3整除的数；
 """
 # here put the import lib
 nums = list(range(51))
