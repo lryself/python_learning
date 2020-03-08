@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 """
-@File : subject7,
+@File : s7_for
 @Time : 2020/3/4 21:01
 @Author : lryself
 @Version : 1.0

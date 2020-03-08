@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 """
-@File : subject6,
+@File : s6_fib
 @Time : 2020/3/4 19:43
 @Author : lryself
 @Version : 1.0

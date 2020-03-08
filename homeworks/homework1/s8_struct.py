@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 """
-@File : subject8,
+@File : s8_struct
 @Time : 2020/3/4 21:13
 @Author : lryself
 @Version : 1.0

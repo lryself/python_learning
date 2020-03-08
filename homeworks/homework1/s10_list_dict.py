@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 """
-@File : subject10,
+@File : s10_list_dict
 @Time : 2020/3/4 22:38
 @Author : lryself
 @Version : 1.0
