@@ -11,6 +11,6 @@
 """
 import random
 # here put the import lib
-data1=[x for x in range(20)]
+data1=[random.randint(1,20) for x in range(20)]
 avs=filter(lambda x:x%2==1,data1)
 print(list(avs))
