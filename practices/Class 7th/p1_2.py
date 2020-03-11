@@ -9,5 +9,5 @@
 '''
 from p1_1 import fib
 # here put the import lib
-if if __name__ == "__main__":
+if __name__ == "__main__":
     fib(0,1,200)
