@@ -19,4 +19,4 @@ print(stus)
 print("大于80分的同学有：")
 for key, value in stus.items():
     if value>=80:
-        print(key)
+        print("{}:{}".format(key,value))

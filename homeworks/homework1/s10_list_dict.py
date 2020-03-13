@@ -11,13 +11,23 @@
 """
 
 # here put the import lib
-# text="One is always on a strange road, watching strange scenery and listeningto strange music. Then one day, you will find that the things you tryhard to forget are already gone."
-text = input("请输入一段英文文本：\n")
+# text = input("请输入一段英文文本：\n")
+text="One is always on a strange road watching strange scenery and listening to strange music Then one day you will find that the things you tryhard to forget are already gone"
 texts1 = list(text.split(" "))
+
+""" 
+# 第一种方法
 texts2 = {}
 for i in texts1:
     if texts2.get(i, 0) == 0:
         texts2[i] = 1
     else:
         texts2[i] = texts2[i] + 1
-print(sorted(texts2.items(), key=lambda x: x[1], reverse=True))
+print(sorted(texts2.items(), key=lambda x: x[1], reverse=True)) """
+
+# 第二种方法
+import collections
+print(collections.Counter(texts1))
+        
+
+

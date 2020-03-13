@@ -7,7 +7,11 @@
 @Contact : lnolvwe@163.com
 """
 """
-题目：
+题目：随机生成20个学生的成绩; 判断这20个学生成绩的等级; 用函数来实现;  
+    A---成绩>=90;  
+    B-->成绩在 [80,90)
+    C-->成绩在 [70,80)
+    D-->成绩<70
 """
 import random
 
@@ -21,7 +25,6 @@ def judge(a):
   if 80 > a >= 70:
     return "C"
   return "D"
-
 
 stus = [random.randint(60, 100) for _ in range(20)]
 print("这20个学生的成绩是：", stus)
