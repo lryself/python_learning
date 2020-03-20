@@ -13,7 +13,6 @@
                     王五      103       83
 
 '''
-
 # here put the import lib
 print("姓名         学号        分数")
 with open("practices\Class 9th\s3_s4.txt","r") as f:

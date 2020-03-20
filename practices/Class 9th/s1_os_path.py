@@ -5,7 +5,7 @@
 @Author : lryself 
 @Version : 1.0
 @Contact : lnolvwe@163.com
-题目：
+题目：练习path函数
 '''
 
 # here put the import lib
