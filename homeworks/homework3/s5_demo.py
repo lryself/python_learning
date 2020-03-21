@@ -37,3 +37,11 @@ else:
     strs.append("1962 by Warner Bros.Inc")
 for i in strs:
     print(i)
+#若要更改原文件
+# try:
+#     with open("Blowing in the wind.txt","w") as f:
+#         strs=f.readlines()
+#         for i in strs:
+#             f.write(i+"\n")
+# except OSError:
+#     print("打开文件错误！")

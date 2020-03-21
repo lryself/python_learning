@@ -11,12 +11,12 @@
 # here put the import lib
 
 #方法1
-# sentence = "I can because i think i can"
-# result = {word: sentence.split().count(word) for word in set(sentence.split())}
-# print(result)
+sentence = "I can because i think i can"
+result = {word: sentence.split().count(word) for word in set(sentence.split())}
+print(result)
 
 #方法2
-from collections import Counter
-str = 'I can because i think i can'
-counts = Counter(str.split())
-print(counts)
+# from collections import Counter
+# str = 'I can because i think i can'
+# counts = Counter(str.split())
+# print(counts)
