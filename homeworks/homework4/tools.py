@@ -61,4 +61,4 @@ def cur_file_dir(): #用于找到当前文件的目录
          return path
      elif os.path.isfile(path):
          return os.path.dirname(path)
-# os.chdir(cur_file_dir())
+os.chdir(cur_file_dir())
