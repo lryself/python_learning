@@ -9,8 +9,8 @@
 '''
 import os
 # here put the import lib
-# file1=input("请给定一个文件夹：(绝对路径)")
-file1="F:\programme\GitHub\python_learning\homeworks\homework4"
+file1=input("请给定一个文件夹：(绝对路径)")
+# file1="F:\programme\GitHub\python_learning\homeworks\homework4"
 def countsize(f):
     allsize=0
     for i in os.listdir(f):
