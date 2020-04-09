@@ -16,43 +16,15 @@
      C  每次攻击, 双方只能安排一个人,或者一条狗进行攻击;
 '''
 from random import randint
+from s5_dog import Dog
+from s5_people import People
 # here put the import lib
-class People(object):
-    def __init__(self):
-        self.life=100
-        self.atk=10
-    
-    def attack(self,enemy):
-        enemy.life-=self.atk
-        enemy.atk-=3
-        if enemy.atk<=0:
-            enemy.atk=0
-        print("人攻击了狗")
-        if enemy.life <= 0:
-            print("一只狗死亡")
-            return enemy
-        return None
 
-class Dog(object):
-    def __init__(self):
-        self.life=80
-        self.atk=15
-
-    def attack(self,enemy):
-        enemy.life-=self.atk
-        enemy.atk-=2
-        if enemy.atk<=0:
-            enemy.atk=0
-        print("狗攻击了人")
-        if enemy.life <= 0:
-            print("一个人死亡")
-            return enemy
-
-if __name__ == "__main__":
+class fight:
     people=[People(),People()]
     dogs=[Dog(),Dog(),Dog()]
     fighter=randint(0,1)
-    while True:
+    for i in range(10000):
         if fighter == 0:
             i=people[randint(0,len(people)-1)].attack(dogs[randint(0,len(dogs)-1)])
             if i:
@@ -71,3 +43,5 @@ if __name__ == "__main__":
             fighter=1
         else:
             fighter=0
+    else:
+        print("平局")

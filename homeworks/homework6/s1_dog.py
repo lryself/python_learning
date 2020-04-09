@@ -13,7 +13,7 @@ from random import randint
 # here put the import lib
 
 class dog(object):
-    members=[]
+    members=[]#狗的成员
     def __init__(self):
         a={"color":"white","number":20,"price":6000}
         b={"color":"black","number":30,"price":8000}
@@ -23,8 +23,11 @@ class dog(object):
     def sold(self,color="",number=0):
         for i in self.members:
             if i["color"]==color:
-                i["number"]-=number
-                print("交易成功！您购买了{}只{}颜色的狗，总价为：{}".format(number,color,i["price"]*number))
+                if number<=i["number"]:
+                    i["number"]-=number
+                    print("交易成功！您购买了{}只{}颜色的狗，总价为：{}".format(number,color,i["price"]*number))
+                else:
+                    print("交易失败！剩余狗的数量不足！")
                 break
         else:
             print("您要购买的狗的颜色不存在")

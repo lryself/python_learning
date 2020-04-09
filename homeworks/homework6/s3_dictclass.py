@@ -29,7 +29,7 @@ class dictclass(object):
     def get_dict(self,key):
         if key in self.value:
             return self.value[key]
-        elif key not in self.value:
+        else:
             return "not found"
     
     def get_key(self):

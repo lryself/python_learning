@@ -18,27 +18,30 @@ from s4_student_private import Student4
 
 class dogTest(unittest.TestCase):
 
-    dog1=dog()
-    nums=[20,30,40]
     color=["white","black","pink"]
 
+    def setUp(self):
+        self.dog1=dog()
+        self.nums=[20,30,40]#理论狗的数量
+
     def test_sold(self):
-        n=randint(2,3)
-        q=randint(0,2)
+        n=randint(2,3)#交易的次数
+        q=randint(0,2)#交易狗的颜色
         for j in range(n):
-            w=randint(1,6)
+            w=randint(1,20)#交易狗的数量
             self.dog1.sold(self.color[q],w)
-            self.nums[q]-=w
+            if w<=self.nums[q]:
+                self.nums[q]-=w
         for e in range(3):
             self.assertEqual(self.nums[e],self.dog1.members[e]["number"])
 
 class studentTest(unittest.TestCase):
     def setUp(self):
-        self.name=random_name()
-        self.age=randint(18,22)
+        self.name=random_name()#生成随机姓名
+        self.age=randint(18,22)#生成随机年龄
         self.score=[]
         for i in range(3):
-            self.score.append(randint(60,100))
+            self.score.append(randint(60,100))#生成随机分数
         self.stu=Student(self.name,self.age,self.score[0],self.score[1],self.score[2])
 
     def tearDown(self):
@@ -56,7 +59,7 @@ class studentTest(unittest.TestCase):
 
 class student4Test(unittest.TestCase):
     sex=["男","女"]
-    def setUp(self):
+    def setUp(self):#生成随机姓名，年龄，性别，分数
         self.name=random_name()
         self.age=randint(18,22)
         self.sexnum=randint(0,1)
@@ -69,14 +72,14 @@ class student4Test(unittest.TestCase):
         for i in self.score:
             self.score.remove(i)
 
-    def test_score(self):
+    def test_score(self):#测试求和，求平均数
         self.assertEqual(sum(self.score),self.stu.sum_score())
         self.assertEqual(sum(self.score)/len(self.score),self.stu.average_score())
         self.stu.print_data()
 
 if __name__ == "__main__":
     suite=unittest.TestSuite()
-    for i in range(100):
+    for i in range(100):#测试次数及需要测试的模块
         # suite.addTest(dogTest('test_sold'))
         # suite.addTests([studentTest('test_name'),studentTest('test_age'),studentTest('test_score')])
         suite.addTest(student4Test('test_score'))
