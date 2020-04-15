@@ -1,1 +1,0 @@
-F:\programme\GitHub\python_learning\homeworks\homework6

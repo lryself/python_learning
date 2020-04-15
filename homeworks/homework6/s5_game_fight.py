@@ -21,27 +21,41 @@ from s5_people import People
 # here put the import lib
 
 class fight:
-    people=[People(),People()]
-    dogs=[Dog(),Dog(),Dog()]
-    fighter=randint(0,1)
-    for i in range(10000):
-        if fighter == 0:
-            i=people[randint(0,len(people)-1)].attack(dogs[randint(0,len(dogs)-1)])
-            if i:
-                dogs.remove(i)
-        elif fighter == 1:
-            i=dogs[randint(0,len(dogs)-1)].attack(people[randint(0,len(people)-1)])
-            if i:
-                dogs.remove(i)
-        if len(people)<=0:
-            print("狗获胜")
-            break
-        elif len(dogs)<=0:
-            print("人类获胜")
-            break
-        if fighter == 0:
-            fighter=1
+    @staticmethod
+    def start():#对战类，可输出结果或者直接返回值，1为人类获胜，0为狗获胜
+        people=[People(),People()]
+        dogs=[Dog(),Dog(),Dog()]
+        fighter=randint(0,1)
+        for i in range(100000):
+            if fighter == 0:
+                j=people[randint(0,len(people)-1)].attack(dogs[randint(0,len(dogs)-1)])
+                if j:
+                    dogs.remove(j)
+            elif fighter == 1:
+                j=dogs[randint(0,len(dogs)-1)].attack(people[randint(0,len(people)-1)])
+                if j:
+                    people.remove(j)
+            if len(people)<=0:
+                # print("狗获胜")
+                return 0
+            elif len(dogs)<=0:
+                # print("人类获胜")
+                return 1
+            if fighter == 0:
+                fighter=1
+            else:
+                fighter=0
         else:
-            fighter=0
-    else:
-        print("平局")
+            print("平局")
+
+if __name__ == "__main__":
+    count1=0
+    count0=0
+    n=10000
+    for i in range(n):
+        a=fight.start()
+        if a==0:
+            count0+=1
+        elif a==1:
+            count1+=1
+    print("人类获胜的频率为：{},狗获胜的频率为：{}".format(count1/n,count0/n))

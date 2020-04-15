@@ -77,6 +77,7 @@ class student4Test(unittest.TestCase):
         self.assertEqual(sum(self.score)/len(self.score),self.stu.average_score())
         self.stu.print_data()
 
+
 if __name__ == "__main__":
     suite=unittest.TestSuite()
     for i in range(100):#测试次数及需要测试的模块

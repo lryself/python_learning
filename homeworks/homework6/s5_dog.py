@@ -15,11 +15,12 @@ class Dog(object):
         self.atk=15
 
     def attack(self,enemy):
-        enemy.life-=self.atk
-        enemy.atk-=2
+        if self.atk>0:
+            enemy.life-=self.atk
+            enemy.atk-=2
         if enemy.atk<=0:
             enemy.atk=0
-        print("狗攻击了人")
+        # print("狗攻击了人")
         if enemy.life <= 0:#判断死亡
-            print("一个人死亡")
+            # print("一个人死亡")
             return enemy

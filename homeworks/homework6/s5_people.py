@@ -15,12 +15,13 @@ class People(object):
         self.atk=10
     
     def attack(self,enemy):
-        enemy.life-=self.atk
-        enemy.atk-=3
+        if self.atk>0:
+            enemy.life-=self.atk
+            enemy.atk-=3
         if enemy.atk<=0:
             enemy.atk=0
-        print("人攻击了狗")
+        # print("人攻击了狗")
         if enemy.life <= 0:#判断死亡
-            print("一只狗死亡")
+            # print("一只狗死亡")
             return enemy
         return None
