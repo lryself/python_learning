@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 '''
-@File : p1.py
+@File : p1_class.py
 @Time : 2020/04/08 09:17:46
 @Author : lryself 
 @Version : 1.0
