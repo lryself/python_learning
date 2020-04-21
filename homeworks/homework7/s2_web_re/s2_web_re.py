@@ -14,18 +14,24 @@ import re
 import os
 import tools
 import urllib
+from bs4 import BeautifulSoup
 # here put the import lib
 with open("webspiderurl.txt","r",encoding="utf-8") as f1:
     with open("answer.txt","w",encoding="utf-8") as f2:
-        w=1
         for i in f1:
             url=i.strip()
             try:
-                print("正在链接第{}个网址".format(w))
-                response=requests.get(url,timeout=1)
+                print("正在链接网址{}".format(url))
+                headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36'}
+                response = requests.get(url,headers=headers,timeout=5).content.decode('utf-8')
             except:
-                print("第{}个网址链接失败".format(w))
+                print("{}链接失败".format(url))
             else:
-                f2.write(url+"\n")
-            finally:
-                w+=1
+                soup=BeautifulSoup(response,'html.parser')
+                list1=soup.find_all("a")
+                answer=set()
+                for i in list1:
+                    if re.search("(((企业)|(公司))介绍)|(关于我们)|(((企业)|(公司))发展)|(发展历史)|(((企业)|(公司))概况)|(走进.*)",i.text):
+                        answer.add(url.rstrip('/')+'/'+i.attrs['href'].lstrip('/')+"\n")
+                for i in answer:
+                    f2.write(i)

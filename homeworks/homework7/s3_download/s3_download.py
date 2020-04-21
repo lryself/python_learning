@@ -29,16 +29,20 @@ baseurl="http://www.listeningexpress.com/studioclassroom/ad/"
 if not os.path.exists("download"):
   os.mkdir("download")
 downpath=os.path.join(os.path.abspath(os.getcwd()),"download")
-os.chdir(downpath)
 try:
   r=requests.get(baseurl)
 except:
   print("打开网址出错！")
 else:
   res=re.findall(r"sc-ad[a-zA-Z0-9 -.]+.mp3",r.text)
+  with open("s3_urltext.txt","w",encoding="utf-8") as f:
+    for i in res:
+      f.write(quote(baseurl+i)+"\n")
+  os.chdir(downpath)
   for j in res:
       j=quote(baseurl+j)
       try:
         wget.download(j)
+        print("下载成功")
       except:
         print("下载失败")
