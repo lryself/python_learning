@@ -36,13 +36,16 @@ except:
 else:
   res=re.findall(r"sc-ad[a-zA-Z0-9 -.]+.mp3",r.text)
   with open("s3_urltext.txt","w",encoding="utf-8") as f:
-    for i in res:
+
+    for i in set(res):
       f.write(quote(baseurl+i)+"\n")
+  
+  #下载
   os.chdir(downpath)
-  for j in res:
-      j=quote(baseurl+j)
-      try:
-        wget.download(j)
-        print("下载成功")
-      except:
-        print("下载失败")
+  for j in set(res):
+    j=quote(baseurl+j)
+    try:
+      wget.download(j)
+      print("下载成功")
+    except:
+      print("下载失败")
