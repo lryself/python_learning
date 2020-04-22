@@ -12,11 +12,11 @@
 
 
 # here put the import lib
-def fib(a, b, c):
+def fib(c,a=0, b=1):
   print(a,end=" ")
   if b < c:
-    fib(b, a + b, c)
+    fib(c,b, a + b)
 
 
 n = int(input("请输入一个数："))
-fib(0, 1, n)
+fib(n)

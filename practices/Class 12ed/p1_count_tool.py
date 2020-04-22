@@ -7,7 +7,7 @@
 @Contact : lnolvwe@163.com
 题目：定义一个高阶函数, 实现加,减,乘,除计算器功能;
 '''
-
+import re
 # here put the import lib
 def jsq(x, y, action):
     def jia(x, y):
@@ -42,7 +42,7 @@ def jsq(x, y, action):
         print("暂时不支持这种操作")
 
 if __name__ == "__main__":
-    data=input("请输入你要计算的简单算式，数字和操作符之间用空格隔开").split()
-    data[0]=int(data[0])
-    data[2]=int(data[2])
-    jsq(data[0],data[2],data[1])
+    data = input("请输入你要计算的简单算式")
+    data2 = re.findall(r'\d+', data)
+    data3 = data[data.find(data2[0]) + len(data2[0])]
+    jsq(int(data2[0]), int(data2[1]), data3)
