@@ -15,31 +15,37 @@ import random
 import time
 from concurrent.futures import ThreadPoolExecutor,wait,ALL_COMPLETED
 # here put the import lib
-def writescore(f,n):
+mu=threading.Lock()
+def writescore(n):
+    print("线程运行")
+    data=[]
     for i in range(n):
-        f.write(tools.random_name()+" "+str(random.randint(60,100))+"\n")
+        data.append(tools.random_name()+" "+str(random.randint(60,100))+"\n")
+    mu.acquire()
+    with open("students.txt","a",encoding="utf-8") as f:
+        for i in data:
+            f.write(i)
+    mu.release()
     return None
 # 多线程程序
 # if __name__ == "__main__":
-#     f=open("students.txt","w",encoding="utf-8")
+#     with open("students.txt","w",encoding="utf-8") as f:
+#         pass
 #     for i in range(5):
-#         p=threading.Thread(target=writescore,args=(f))
+#         p=threading.Thread(target=writescore,args=(20,))
 #         p.start()
-    
 #     while True:
 #         if len(threading.enumerate())<=1:
 #             break
 #         time.sleep(1)
-#     f.close()
 #     print("输出完成")
 
 # 线程池
 if __name__ == "__main__":
-    f=open("students.txt","w",encoding="utf-8")
+    with open("students.txt","w",encoding="utf-8") as f:
+        pass
     executor=ThreadPoolExecutor(max_workers=5)
-    alltask=[]
     for i in range(5):
-        alltask.append(executor.submit(writescore(f,20)))
-    wait(alltask,return_when=ALL_COMPLETED)
-    f.close()
+        executor.submit(writescore,20)
+    executor.shutdown(True)
     print("输出完成")
