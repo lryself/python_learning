@@ -10,6 +10,7 @@
 import random
 import os
 import sys
+import time
 # here put the import lib
 def random_name():#随机生成姓名
     # 删减部分，比较大众化姓氏
@@ -62,3 +63,12 @@ def cur_file_dir(): #用于找到当前文件的目录
      elif os.path.isfile(path):
          return os.path.dirname(path)
 os.chdir(cur_file_dir())
+
+def count_time(func):
+    def wget1(*args):
+        begin = time.time()
+        res = func(*args)
+        end = time.time()
+        print(end - begin)
+        return res
+    return wget1
