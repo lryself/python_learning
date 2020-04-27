@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "f:\\programme\\GitHub\\python_learning\\venv\\Scripts\\python.exe"
+    "python.pythonPath": "f:\\programme\\GitHub\\python_learning\\venv\\Scripts\\python.exe",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }

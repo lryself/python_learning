@@ -9,7 +9,8 @@
       学生的信息存储在文件中;学生信息的字段有(班级,学号,姓名, Python成绩)
       实现对学生信息及成绩的增,删,改,查方法;
 '''
-
+import os
+import time
 # here put the import lib
 class student(object):#学生信息类
     def __init__(self,data):
@@ -70,6 +71,9 @@ class stu_score(object):#学生信息管理系统
                 print("打开失败！请注意输入是否正确！")
             else:
                 while True:
+                    os.system("cls")
+                    print("现在的列表是：")
+                    data.printstu(f)
                     print("0.退出程序")
                     print("1.增加学生")
                     print("2.删除学生")
@@ -96,10 +100,7 @@ class stu_score(object):#学生信息管理系统
                             data.findstu(stu1).print_data()
                     else:
                         print("输入错误，请重新输入")
-                    
-                    print("现在的列表是：")
-                    data.printstu(f)
-                    print()
+                    time.sleep(1)#停留1秒后清屏
 
 
 if __name__ == "__main__":
