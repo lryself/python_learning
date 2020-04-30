@@ -14,7 +14,7 @@ from socket import *
 
 def send_massage():
     udp_socket = socket(AF_INET, SOCK_DGRAM)
-    dest_addr = ('127.0.0.1', 8888)
+    dest_addr = ('192.168.1.2', 9999)
     while True:
         send_data = input("请输入要发送的数据:")
         if send_data == 'exit':
@@ -40,6 +40,7 @@ def recv_message():
 
 if __name__ == '__main__':
     # p1 = Process(target=send_massage)
+    print(gethostbyname(gethostname()))
     p2 = Process(target=recv_message)
     p2.start()
     # p1.start()
