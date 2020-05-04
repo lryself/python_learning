@@ -11,10 +11,17 @@ import random
 import os
 import sys
 import time
+import socket
+import datetime
 # here put the import lib
 
 
-def random_name():  # 随机生成姓名
+def random_name() -> str:
+    '''
+    随机生成姓名
+
+    :return:返回一个随机中文姓名
+    '''
     # 删减部分，比较大众化姓氏
     firstName = "赵钱孙李周吴郑王冯陈褚卫蒋沈韩杨朱秦尤许何吕施张孔曹严华金魏陶姜戚谢邹喻水云苏潘葛奚范彭郎鲁韦昌马苗凤花方俞任袁柳鲍史唐费岑薛雷贺倪汤滕殷罗毕郝邬安常乐于时傅卞齐康伍余元卜顾孟平" \
                 "黄和穆萧尹姚邵湛汪祁毛禹狄米贝明臧计成戴宋茅庞熊纪舒屈项祝董粱杜阮席季麻强贾路娄危江童颜郭梅盛林刁钟徐邱骆高夏蔡田胡凌霍万柯卢莫房缪干解应宗丁宣邓郁单杭洪包诸左石崔吉" \
@@ -56,7 +63,12 @@ def random_name():  # 随机生成姓名
         return firstName_name + name_1 + boy_name
 
 
-def cur_file_dir():  # 用于找到当前文件的目录
+def cur_file_dir():
+    '''
+    用于找到当前文件的目录
+
+    :return:返回一个绝对路径
+    '''
     # 获取脚本路径
     path = sys.path[0]
     # 判断为脚本文件还是py2exe编译后的文件，如果是脚本文件，则返回的是脚本的目录，如果是py2exe编译后的文件，则返回的是编译后的文件路径
@@ -64,10 +76,14 @@ def cur_file_dir():  # 用于找到当前文件的目录
         return path
     elif os.path.isfile(path):
         return os.path.dirname(path)
-# os.chdir(cur_file_dir())
+    # os.chdir(cur_file_dir())
 
 
 def count_time(func):
+    '''
+    这是装饰器，用来计算运行时间，返回单位是秒
+    :func:给定函数
+    '''
     def wget1(*args):
         begin = time.time()
         res = func(*args)
@@ -75,3 +91,22 @@ def count_time(func):
         print(end - begin)
         return res
     return wget1
+
+
+def get_host_ip() -> str:
+    '''
+    获取本机ip
+
+    :return:返回本机ip
+    '''
+    return socket.gethostbyname(socket.gethostname())
+
+
+def get_now_time() -> str:
+    '''
+    获取现在时间
+
+    :return:格式是：年-月-日 时:分:秒
+    '''
+    time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    return time
