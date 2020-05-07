@@ -12,14 +12,14 @@
                     李四      102       87
                     王五      103       83
 '''
-
+import tools
 # here put the import lib
-f=open("practices\Class 9th\s3_s4.txt","r")
+f=open("s3_s4.txt","r")
 list1=f.readlines()
 for i in range(len(list1)):
     list1[i]=list1[i].rstrip("\n").split(",")
     list1[i][2]=int(list1[i][2])
 list1=sorted(list1,key=lambda li: li[2])
-with open("practices\Class 9th\s4.txt","w") as f:
+with open("s4.txt","w") as f:
     for i in list1:
         f.write(i[0]+","+i[1]+","+str(i[2])+"\n")

@@ -10,8 +10,9 @@
 
 # here put the import lib
 import os
+import tools
 
-path1=os.path.abspath("F:\编程\GitHub\python_learning\practices\Class 9th\os_practice")
+path1=os.path.abspath("os_practice")
 print( os.path.basename(path1) )   # 返回文件名
 print( os.path.dirname(path1) )    # 返回目录路径
 print( os.path.split(path1) )      # 分割文件名与路径

@@ -1,18 +1,21 @@
 # -*- encoding: utf-8 -*-
 '''
-@File : s5_pickle.py
-@Time : 2020/03/18 10:29:46
-@Author : lryself 
+@File : tools.py
+@Time : 2020/03/20 19:15:42
+@Author : lryself
 @Version : 1.0
 @Contact : lnolvwe@163.com
-题目：
-练习:
-  给定一个字典,保存了5个同学的学号,姓名,年龄;使用pickle模块将数据对象保存到文件中去;
+备注：本程序为存放其他程序的辅助函数
 '''
-import pickle
 import random
+import os
+import sys
+import time
+import socket
 # here put the import lib
-def random_name():
+
+
+def random_name()->随机生成姓名，返回str:  
     # 删减部分，比较大众化姓氏
     firstName = "赵钱孙李周吴郑王冯陈褚卫蒋沈韩杨朱秦尤许何吕施张孔曹严华金魏陶姜戚谢邹喻水云苏潘葛奚范彭郎鲁韦昌马苗凤花方俞任袁柳鲍史唐费岑薛雷贺倪汤滕殷罗毕郝邬安常乐于时傅卞齐康伍余元卜顾孟平" \
                 "黄和穆萧尹姚邵湛汪祁毛禹狄米贝明臧计成戴宋茅庞熊纪舒屈项祝董粱杜阮席季麻强贾路娄危江童颜郭梅盛林刁钟徐邱骆高夏蔡田胡凌霍万柯卢莫房缪干解应宗丁宣邓郁单杭洪包诸左石崔吉" \
@@ -24,21 +27,21 @@ def random_name():
     #             "双闻莘党翟谭贡劳逄姬申扶堵冉宰郦雍舄璩桑桂濮牛寿通边扈燕冀郏浦尚农温别庄晏柴瞿阎充慕连茹习宦艾鱼容向古易慎戈廖庾终暨居衡步都耿满弘匡国文寇广禄阙东殴殳沃利蔚越夔隆师巩厍聂晁勾敖融冷訾辛阚那简饶空" \
     #             "曾毋沙乜养鞠须丰巢关蒯相查後荆红游竺权逯盖益桓公晋楚闫法汝鄢涂钦归海帅缑亢况后有琴梁丘左丘商牟佘佴伯赏南宫墨哈谯笪年爱阳佟言福百家姓终"
     # 百家姓中双姓氏
-    firstName2="万俟司马上官欧阳夏侯诸葛闻人东方赫连皇甫尉迟公羊澹台公冶宗政濮阳淳于单于太叔申屠公孙仲孙轩辕令狐钟离宇文长孙慕容鲜于闾丘司徒司空亓官司寇仉督子颛孙端木巫马公西漆雕乐正壤驷公良拓跋夹谷宰父谷梁段干百里东郭南门呼延羊舌微生梁丘左丘东门西门南宫南宫"
+    firstName2 = "万俟司马上官欧阳夏侯诸葛闻人东方赫连皇甫尉迟公羊澹台公冶宗政濮阳淳于单于太叔申屠公孙仲孙轩辕令狐钟离宇文长孙慕容鲜于闾丘司徒司空亓官司寇仉督子颛孙端木巫马公西漆雕乐正壤驷公良拓跋夹谷宰父谷梁段干百里东郭南门呼延羊舌微生梁丘左丘东门西门南宫南宫"
     # 女孩名字
     girl = '秀娟英华慧巧美娜静淑惠珠翠雅芝玉萍红娥玲芬芳燕彩春菊兰凤洁梅琳素云莲真环雪荣爱妹霞香月莺媛艳瑞凡佳嘉琼勤珍贞莉桂娣叶璧璐娅琦晶妍茜秋珊莎锦黛青倩婷姣婉娴瑾颖露瑶怡婵雁蓓纨仪荷丹蓉眉君琴蕊薇菁梦岚苑婕馨瑗琰韵融园艺咏卿聪澜纯毓悦昭冰爽琬茗羽希宁欣飘育滢馥筠柔竹霭凝晓欢霄枫芸菲寒伊亚宜可姬舒影荔枝思丽'
     # 男孩名字
     boy = '伟刚勇毅俊峰强军平保东文辉力明永健世广志义兴良海山仁波宁贵福生龙元全国胜学祥才发武新利清飞彬富顺信子杰涛昌成康星光天达安岩中茂进林有坚和彪博诚先敬震振壮会思群豪心邦承乐绍功松善厚庆磊民友裕河哲江超浩亮政谦亨奇固之轮翰朗伯宏言若鸣朋斌梁栋维启克伦翔旭鹏泽晨辰士以建家致树炎德行时泰盛雄琛钧冠策腾楠榕风航弘'
     # 名
     name = '中笑贝凯歌易仁器义礼智信友上都卡被好无九加电金马钰玉忠孝'
- 
+
     # 10%的机遇生成双数姓氏
-    if random.choice(range(100))>10:
-        firstName_name =firstName[random.choice(range(len(firstName)))]
+    if random.choice(range(100)) > 10:
+        firstName_name = firstName[random.choice(range(len(firstName)))]
     else:
         i = random.choice(range(len(firstName2)))
-        firstName_name =firstName2[i:i+2]
- 
+        firstName_name = firstName2[i:i + 2]
+
     sex = random.choice(range(2))
     name_1 = ""
     # 生成并返回一个名字
@@ -53,13 +56,27 @@ def random_name():
             name_1 = name[random.choice(range(len(name)))]
         return firstName_name + name_1 + boy_name
 
-stulist=[]
-for _ in range(5):
-    student={"id":random.randint(10000,10005),"name":random_name(),"age":random.randint(18,22)}
-    stulist.append(student)
-print("原列表",stulist)
-with open("practices\Class 9th\s5.txt","wb") as f:
-    pickle.dump(stulist,f)
-with open("practices\Class 9th\s5.txt","rb") as f:
-    stulist2=pickle.load(f)
-    print("读取的列表：",stulist2)
+
+def cur_file_dir()->用于找到当前文件的目录:  
+    # 获取脚本路径
+    path = sys.path[0]
+    # 判断为脚本文件还是py2exe编译后的文件，如果是脚本文件，则返回的是脚本的目录，如果是py2exe编译后的文件，则返回的是编译后的文件路径
+    if os.path.isdir(path):
+        return path
+    elif os.path.isfile(path):
+        return os.path.dirname(path)
+# os.chdir(cur_file_dir())
+
+
+def count_time(func)->计算运行时间，返回单位是秒:
+    def wget1(*args):
+        begin = time.time()
+        res = func(*args)
+        end = time.time()
+        print(end - begin)
+        return res
+    return wget1
+
+
+def get_host_ip()->获取本机ip:
+    return socket.gethostbyname(socket.gethostname())

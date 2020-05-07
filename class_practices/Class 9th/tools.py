@@ -76,7 +76,7 @@ def cur_file_dir():
         return path
     elif os.path.isfile(path):
         return os.path.dirname(path)
-# os.chdir(cur_file_dir())
+os.chdir(cur_file_dir())
 
 
 def count_time(func):

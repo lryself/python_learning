@@ -13,9 +13,10 @@
                     王五      103       83
 
 '''
+import tools
 # here put the import lib
 print("姓名         学号        分数")
-with open("practices\Class 9th\s3_s4.txt","r") as f:
+with open("s3_s4.txt","r",encoding="utf-8") as f:
     for _ in range(3):
         list1=f.readline().split(",")
         print(list1[0],"      ",list1[1],"      ",list1[2],end="")
