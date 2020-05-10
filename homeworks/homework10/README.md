@@ -3,3 +3,5 @@
 * id:rj1801lry
 * password:lry12345678
 * 端口：3306
+
+### 本题中的第三方库存在resuirements.txt中

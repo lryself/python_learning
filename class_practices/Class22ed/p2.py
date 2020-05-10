@@ -25,7 +25,7 @@ class Student(Base):
 
 # 初始化数据库连接
 engine = create_engine(
-    'mysql+mysqlconnector://rj1801lry:lry12345678@rm-2zekx3j75e3rv0k938o.mysql.rds.aliyuncs.com:3306/python_learn')
+    "mysql+pymysql://rj1801lry:lry12345678@rm-2zekx3j75e3rv0k938o.mysql.rds.aliyuncs.com:3306/python_learn")
 
 DBSession = sessionmaker(bind=engine)
 
