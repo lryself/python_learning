@@ -172,13 +172,7 @@ class StuChoose(Base):
         '''
         try:
             session = DBSession()
-            res = session.query(StuChoose).filter(
-                StuChoose.user == self.user,
-                StuChoose.class_id == self.class_id).first()
-            if res:
-                session.add(self)
-            else:
-                return False
+            session.add(self)
             session.commit()
             session.close()
             return True

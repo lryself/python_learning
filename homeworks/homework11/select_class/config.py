@@ -17,4 +17,8 @@ DATABASE_TEACHER_USER="temp2"
 DATABASE_TEACHER_PASSWARD="Ll123456"
 IS_STUDENT=1
 
-# sqlacodegen --outfile=models.py mysql://temp2:Ll123456@"rm-2zekx3j75e3rv0k938o.mysql.rds.aliyuncs.com":3306/python_learn_selectclass?charset=utf8 --tables stu_choose
+# 加载数据库文件
+# sqlacodegen --outfile=models.py mysql://temp2:Ll123456@"rm-2zekx3j75e3rv0k938o.mysql.rds.aliyuncs.com":3306/python_learn_selectclass?charset=utf8
+
+#导出第三方库
+# pip freeze >requirements.txt

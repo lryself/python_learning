@@ -25,7 +25,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a69a49d7-f0d7-4d9f-9b37-a304b18b71bd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/select_class.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/select_class.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main/User.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/User.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main/db_option.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/db_option.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/testUserself.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/testUserself.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,8 +64,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../.." />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="PyConsoleConfigurable.Python Console" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings module-name="select_class" is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="select_class" />
+      </console-settings>
+    </option>
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -127,9 +142,41 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
+    <configuration name="Unittests for testUserself.UserselfTest.testadd_class" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="select_class" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;testUserself.UserselfTest.testadd_class&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for testUserself.UserselfTest.testdelete_class" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="select_class" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;testUserself.UserselfTest.testdelete_class&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.User" />
+        <item itemvalue="Python tests.Unittests for testUserself.UserselfTest.testadd_class" />
+        <item itemvalue="Python tests.Unittests for testUserself.UserselfTest.testdelete_class" />
         <item itemvalue="Python.db_option" />
       </list>
     </recent_temporary>
@@ -147,6 +194,7 @@
       <workItem from="1589598341972" duration="19114000" />
       <workItem from="1589630602798" duration="4762000" />
       <workItem from="1589635441564" duration="39000" />
+      <workItem from="1589682492367" duration="8714000" />
     </task>
     <servers />
   </component>
@@ -173,42 +221,46 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589635478457" />
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1589635374345">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1589693080279">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589635374345" />
-    <state width="1493" height="261" key="GridCell.Tab.0.center" timestamp="1589635374345">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589693080279" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1589693080279">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589635374345" />
-    <state width="1493" height="261" key="GridCell.Tab.0.left" timestamp="1589635374344">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589693080279" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1589693080279">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589635374344" />
-    <state width="1493" height="261" key="GridCell.Tab.0.right" timestamp="1589635374345">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589693080279" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1589693080279">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589635374345" />
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1589635374345">
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589693080279" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1589687767743">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589635374345" />
-    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1589635374345">
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589687767743" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1589687767743">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1589635374345" />
-    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1589635374345">
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1589687767743" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1589687767743">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1589635374345" />
-    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1589635374345">
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1589687767743" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1589687767743">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1589635374345" />
-    <state width="732" height="419" key="XDebugger.FullValuePopup" timestamp="1589633853900">
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1589687767743" />
+    <state x="270" y="57" key="SettingsEditor" timestamp="1589688135431">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="732" height="419" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1589633853900" />
+    <state x="270" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1589688135431" />
+    <state width="732" height="419" key="XDebugger.FullValuePopup" timestamp="1589687562108">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="732" height="419" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1589687562108" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1589625886590">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -217,12 +269,14 @@
   <component name="XDebuggerManager">
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="i" language="Python" />
+        <watch expression="temp.class_times" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/select_class$User.coverage" NAME="User Coverage Results" MODIFIED="1589635012637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/main" />
+    <SUITE FILE_PATH="coverage/select_class$User.coverage" NAME="User Coverage Results" MODIFIED="1589688628942" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/main" />
     <SUITE FILE_PATH="coverage/select_class$db_option.coverage" NAME="db_option Coverage Results" MODIFIED="1589629260136" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/main" />
+    <SUITE FILE_PATH="coverage/select_class$Unittests_for_testUserself_UserselfTest_testadd_class.coverage" NAME="Unittests for testUserself.UserselfTest.testadd_class Coverage Results" MODIFIED="1589688623205" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/select_class$Unittests_for_testUserself_UserselfTest_testdelete_class.coverage" NAME="Unittests for testUserself.UserselfTest.testdelete_class Coverage Results" MODIFIED="1589688595309" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
   </component>
 </project>

@@ -9,7 +9,30 @@
 from config import IS_STUDENT
 import tools
 import db_option
+
+
 # here put the import lib
+
+
+def end_update(func):
+    def end_update1(*args, **kwargs):
+        res = func(*args, **kwargs)
+        Userself.load_class_times(args[0])
+        return res
+
+    return end_update1
+
+
+def authentication(func):
+    def aut1(*args, **kwargs):
+        if args[0].is_student != IS_STUDENT:
+            res = func(*args, **kwargs)
+            return res
+        else:
+            return None
+
+    return aut1
+
 
 class Userself():
     def __init__(self, name, password, is_student):
@@ -19,29 +42,147 @@ class Userself():
         self.is_true_user = False
         self.is_student = is_student
         self.DBSession = db_option.db_load(self.is_student)
+        self.load_class_times(self)
 
-    def load(self):
-        if db_option.User.is_true_user(DBSession=self.DBSession, name=self.username, password=self.password):
+    @staticmethod
+    @classmethod
+    def load(cls, username, password, is_student):
+        DBSession = db_option.db_load(is_student)
+        if db_option.User.is_true_user(DBSession=DBSession, name=username, password=password):
             print("登录成功！")
             return True
         else:
             print("登录失败！")
             return False
 
+    @staticmethod
     def load_class_times(self):
-        res=db_option.StuChoose.find_id(DBSession=self.DBSession, word='user', value=self.username)
+        '''
+        用于将学生已经选的课加载进学生信息中
+        :return:
+        '''
+        self.class_times = [[[0 for cls in range(10)] for col in range(7)] for row in range(25)]
+        res = db_option.StuChoose.find_id(DBSession=self.DBSession, word='user', value=self.username)
         if res:
             for i in res:
-                cls=db_option.Classes.find_class(DBSession=self.DBSession,word='id',value=i.class_id)[0]
-                cls_times=cls.time.split('|')
-                for j in range(cls.begin_week-1,cls.end_week):
+                cls = db_option.Classes.find_class(DBSession=self.DBSession, word='id', value=i.class_id)[0]
+                cls_times = cls.time.split('|')
+                for j in range(cls.begin_week - 1, cls.end_week):
                     for w in cls_times:
-                        week,num=w.split('_')
-                        self.class_times[j][int(week)-1][int(num)-1]=i.class_id
+                        week, num = w.split('_')
+                        self.class_times[j][int(week) - 1][int(num) - 1] = i.class_id
         else:
             print("加载失败！")
 
+    @end_update
+    def add_class(self, class_id):
+        '''
+        添加选课信息
+        :param class_id: 课程编号
+        :return: 选课结果
+        '''
+        newclass = db_option.StuChoose()
+        newclass.user = self.username
+        newclass.class_id = class_id
+        newclass_res = db_option.Classes.find_class(DBSession=self.DBSession, word='id', value=class_id)[0]
+        if newclass_res:
+            cls_times = newclass_res.time.split('|')
+            for j in range(newclass_res.begin_week - 1, newclass_res.end_week):
+                for w in cls_times:
+                    week, num = w.split('_')
+                    if self.class_times[j][int(week) - 1][int(num) - 1] != 0:
+                        return False
+        else:
+            return False
+        res = newclass.add(DBSession=self.DBSession)
+        return res
+
+    @end_update
+    def del_class(self, class_id: int) -> bool:
+        '''
+        删除选课信息
+        :param class_id: 课程id
+        :return: 删除结果
+        '''
+        res = db_option.StuChoose.delete_class(DBSession=self.DBSession, cls_id=class_id, user=self.username)
+        return res
+
+    def upd_password(self, oldpassword: str, newpassword: str) -> bool:
+        '''
+        修改密码
+        :param oldpassword: 旧密码
+        :param newpassword: 新密码
+        :return: 修改结果
+        '''
+        res = db_option.User.update_stu(
+            DBSession=self.DBSession,
+            stu_name=self.username,
+            old_password=oldpassword,
+            new_password=newpassword)
+        if res:
+            self.password = newpassword
+            return True
+        else:
+            return False
+
+    def find_allclass(self):
+        res = db_option.StuChoose.find_id(
+            DBSession=self.DBSession,
+            word='user',
+            value=self.username)
+        if res:
+            return res
+        else:
+            return None
+
+    @authentication
+    def additive_class(
+        self,
+        class_name: str,
+        class_teacher: str,
+        class_time: str,
+        class_begin_week: int,
+        class_end_week: int):
+        '''
+        管理员创建课程
+        :param class_name: 课程名称
+        :param class_teacher: 课程教师
+        :param class_time: 课程时间
+        :param class_begin_week: 课程开始周数
+        :param class_end_week: 课程结束周数
+        :return: bool 添加结果
+        '''
+        cls = db_option.Classes()
+        cls.name = class_name
+        cls.teacher = class_teacher
+        cls.time = class_time
+        cls.begin_week = class_begin_week
+        cls.end_week = class_end_week
+        res = cls.add(self.DBSession)
+        return res
+
+    @authentication
+    def del_class(self, class_id: int) -> bool:
+        '''
+        管理员删除课程信息
+        :param class_id: 课程id
+        :return: 删除结果
+        '''
+        res = db_option.Classes.delete_class(
+            DBSession=self.DBSession, cls_id=class_id)
+        return res
+
+    @authentication
+    def update_class(self, *args):
+        '''
+        管理员修改课程信息
+        :param args:
+        :return: 修改结果
+        '''
+        res = db_option.Classes.update_class(DBSession=self.DBSession, *args)
+        return res
+
+
 if __name__ == '__main__':
-    temp=Userself('stu1','123456',1)
-    temp.load_class_times()
-    print(temp.class_times)
+    temp = Userself('stu1', '123456', 1)
+    print(temp.add_class(1))
