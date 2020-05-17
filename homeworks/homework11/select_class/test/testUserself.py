@@ -14,8 +14,7 @@ class UserselfTest(unittest.TestCase):
     def testload(self):
         u1='stu1'
         u2='123456'
-        user1=Userself(u1,u2,1)
-        self.assertEqual(user1.load(),True)
+        self.assertEqual(Userself.load(u1,u2),True)
 
     def testadd_class(self):
         temp = Userself('stu1', '123456', 1)

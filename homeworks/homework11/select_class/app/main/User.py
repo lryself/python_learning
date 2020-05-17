@@ -7,8 +7,11 @@
 @Contact : lnolvwe@163.com
 """
 from config import IS_STUDENT
+from flask_login import UserMixin
+from werkzeug.security import generate_password_hash, check_password_hash
+from app import login
 import tools
-import db_option
+import models
 
 
 # here put the import lib
@@ -34,21 +37,24 @@ def authentication(func):
     return aut1
 
 
-class Userself():
+class Userself(UserMixin):
     def __init__(self, name, password, is_student):
         self.class_times = [[[0 for cls in range(10)] for col in range(7)] for row in range(25)]
         self.username = name
-        self.password = password
+        self.password = generate_password_hash(password)
         self.is_true_user = False
         self.is_student = is_student
-        self.DBSession = db_option.db_load(self.is_student)
         self.load_class_times(self)
 
     @staticmethod
-    @classmethod
-    def load(cls, username, password, is_student):
-        DBSession = db_option.db_load(is_student)
-        if db_option.User.is_true_user(DBSession=DBSession, name=username, password=password):
+    def load(username, password) -> bool:
+        '''
+        用户登录验证
+        :param username: 用户名
+        :param password: 密码
+        :return: 登录结果
+        '''
+        if models.User.is_true_user(name=username, password=password):
             print("登录成功！")
             return True
         else:
@@ -62,10 +68,10 @@ class Userself():
         :return:
         '''
         self.class_times = [[[0 for cls in range(10)] for col in range(7)] for row in range(25)]
-        res = db_option.StuChoose.find_id(DBSession=self.DBSession, word='user', value=self.username)
+        res = models.StuChoose.find_id( word='user', value=self.username)
         if res:
             for i in res:
-                cls = db_option.Classes.find_class(DBSession=self.DBSession, word='id', value=i.class_id)[0]
+                cls = models.Classes.find_class(word='id', value=i.class_id)[0]
                 cls_times = cls.time.split('|')
                 for j in range(cls.begin_week - 1, cls.end_week):
                     for w in cls_times:
@@ -81,10 +87,10 @@ class Userself():
         :param class_id: 课程编号
         :return: 选课结果
         '''
-        newclass = db_option.StuChoose()
+        newclass = models.StuChoose()
         newclass.user = self.username
         newclass.class_id = class_id
-        newclass_res = db_option.Classes.find_class(DBSession=self.DBSession, word='id', value=class_id)[0]
+        newclass_res = models.Classes.find_class(word='id', value=class_id)[0]
         if newclass_res:
             cls_times = newclass_res.time.split('|')
             for j in range(newclass_res.begin_week - 1, newclass_res.end_week):
@@ -94,7 +100,7 @@ class Userself():
                         return False
         else:
             return False
-        res = newclass.add(DBSession=self.DBSession)
+        res = newclass.add()
         return res
 
     @end_update
@@ -104,7 +110,7 @@ class Userself():
         :param class_id: 课程id
         :return: 删除结果
         '''
-        res = db_option.StuChoose.delete_class(DBSession=self.DBSession, cls_id=class_id, user=self.username)
+        res = models.StuChoose.delete_class(cls_id=class_id, user=self.username)
         return res
 
     def upd_password(self, oldpassword: str, newpassword: str) -> bool:
@@ -114,8 +120,8 @@ class Userself():
         :param newpassword: 新密码
         :return: 修改结果
         '''
-        res = db_option.User.update_stu(
-            DBSession=self.DBSession,
+        res = models.User.update_stu(
+              
             stu_name=self.username,
             old_password=oldpassword,
             new_password=newpassword)
@@ -126,10 +132,7 @@ class Userself():
             return False
 
     def find_allclass(self):
-        res = db_option.StuChoose.find_id(
-            DBSession=self.DBSession,
-            word='user',
-            value=self.username)
+        res = models.StuChoose.find_id(word='user', value=self.username)
         if res:
             return res
         else:
@@ -137,12 +140,7 @@ class Userself():
 
     @authentication
     def additive_class(
-        self,
-        class_name: str,
-        class_teacher: str,
-        class_time: str,
-        class_begin_week: int,
-        class_end_week: int):
+        self, class_name: str, class_teacher: str, class_time: str, class_begin_week: int, class_end_week: int):
         '''
         管理员创建课程
         :param class_name: 课程名称
@@ -152,24 +150,23 @@ class Userself():
         :param class_end_week: 课程结束周数
         :return: bool 添加结果
         '''
-        cls = db_option.Classes()
+        cls = models.Classes()
         cls.name = class_name
         cls.teacher = class_teacher
         cls.time = class_time
         cls.begin_week = class_begin_week
         cls.end_week = class_end_week
-        res = cls.add(self.DBSession)
+        res = cls.add()
         return res
 
     @authentication
-    def del_class(self, class_id: int) -> bool:
+    def delete_class(self, class_id: int) -> bool:
         '''
         管理员删除课程信息
         :param class_id: 课程id
         :return: 删除结果
         '''
-        res = db_option.Classes.delete_class(
-            DBSession=self.DBSession, cls_id=class_id)
+        res = models.Classes.delete_class(cls_id=class_id)
         return res
 
     @authentication
@@ -179,10 +176,20 @@ class Userself():
         :param args:
         :return: 修改结果
         '''
-        res = db_option.Classes.update_class(DBSession=self.DBSession, *args)
+        res = models.Classes.update_class(*args)
         return res
 
+    @staticmethod
+    def get(user_name):
+        """根据用户ID获取用户实体，为 login_user 方法提供支持"""
+        if not user_name:
+            return None
+        return models.User.find_stu(value=user_name)
+
+@login.user_loader  # 定义获取登录用户的方法
+def load_user(user_name):
+    return Userself.get(user_name)
 
 if __name__ == '__main__':
     temp = Userself('stu1', '123456', 1)
-    print(temp.add_class(1))
+    print(temp.del_class(1))

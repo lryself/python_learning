@@ -1,0 +1,26 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} 的选课系统</title>
+        {% else %}
+        <title>学生选课系统</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>
+            <a href="{{ url_for('index') }}">首页</a>
+            <a href="{{ url_for('login') }}">登录</a>
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>

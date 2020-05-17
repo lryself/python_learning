@@ -7,3 +7,4 @@
 @Contact : lnolvwe@163.com
 """
 # here put the import lib
+from main import User
