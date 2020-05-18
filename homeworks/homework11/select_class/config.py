@@ -18,14 +18,15 @@ DATABASE_STUDENT_PASSWARD="Xx123456"
 DATABASE_TEACHER_USER="temp2"
 DATABASE_TEACHER_PASSWARD="Ll123456"
 SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{user}:{password}@{host}:{port}/python_learn_selectclass?charset=utf8'.format(
-    user=DATABASE_TEACHER_USER,password=DATABASE_TEACHER_PASSWARD,host=DATABASE_URL,port=3306
+    user=DATABASE_TEACHER_USER, password=DATABASE_TEACHER_PASSWARD, host=DATABASE_URL, port=3306
 )
-SQLALCHEMY_TRACK_MODIFICATIONS = True
-SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
-IS_STUDENT=True
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+IS_STUDENT=1
+IS_NOT_STUDENT=0
 SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
+
 # 加载数据库文件
-# sqlacodegen --outfile=models.py mysql://temp2:Ll123456@"rm-2zekx3j75e3rv0k938o.mysql.rds.aliyuncs.com":3306/python_learn_selectclass?charset=utf8
+# flask-sqlacodegen --outfile=models.py mysql://temp2:Ll123456@"rm-2zekx3j75e3rv0k938o.mysql.rds.aliyuncs.com":3306/python_learn_selectclass?charset=utf8 --flask
 
 #导出第三方库
 # pip freeze >requirements.txt

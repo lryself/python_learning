@@ -14,17 +14,17 @@ from app import app
 
 @app.route('/')
 @app.route('/index')
-# @login_required
+@login_required
 def index():
-    # posts = [
-    #     {
-    #         'author': {'username': 'John'},
-    #         'body': 'Beautiful day in Portland!'
-    #     },
-    #     {
-    #         'author': {'username': 'Susan'},
-    #         'body': 'The Avengers movie was so cool!'
-    #     }
-    # ]
-    # return render_template('index.html', title='Home', posts=posts)
-    return "Hello, World!"
+    user=
+    posts = [
+        {
+            'author': {'username': 'John'},
+            'body': 'Beautiful day in Portland!'
+        },
+        {
+            'author': {'username': 'Susan'},
+            'body': 'The Avengers movie was so cool!'
+        }
+    ]
+    return render_template('index.html', title='首页', posts=posts)

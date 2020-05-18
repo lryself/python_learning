@@ -7,11 +7,8 @@
 @Contact : lnolvwe@163.com
 """
 from config import IS_STUDENT
-from flask_login import UserMixin
-from werkzeug.security import generate_password_hash, check_password_hash
-from app import login
-import tools
-import models
+from werkzeug.security import generate_password_hash
+import app.models as models
 
 
 # here put the import lib
@@ -37,13 +34,13 @@ def authentication(func):
     return aut1
 
 
-class Userself(UserMixin):
-    def __init__(self, name, password, is_student):
+class Userself:
+    def __init__(self, name, password):
         self.class_times = [[[0 for cls in range(10)] for col in range(7)] for row in range(25)]
         self.username = name
         self.password = generate_password_hash(password)
         self.is_true_user = False
-        self.is_student = is_student
+        self.is_student = models.User.is_stu(name)
         self.load_class_times(self)
 
     @staticmethod
@@ -68,7 +65,7 @@ class Userself(UserMixin):
         :return:
         '''
         self.class_times = [[[0 for cls in range(10)] for col in range(7)] for row in range(25)]
-        res = models.StuChoose.find_id( word='user', value=self.username)
+        res = models.StuChoose.find_id(word='user', value=self.username)
         if res:
             for i in res:
                 cls = models.Classes.find_class(word='id', value=i.class_id)[0]
@@ -186,10 +183,8 @@ class Userself(UserMixin):
             return None
         return models.User.find_stu(value=user_name)
 
-@login.user_loader  # 定义获取登录用户的方法
-def load_user(user_name):
-    return Userself.get(user_name)
+
 
 if __name__ == '__main__':
-    temp = Userself('stu1', '123456', 1)
-    print(temp.del_class(1))
+    temp = Userself('stu1', '123456')
+    print(temp.add_class(1))

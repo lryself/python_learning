@@ -7,15 +7,14 @@
 @Contact : lnolvwe@163.com
 """
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
-from app.main.models import User
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import ValidationError, DataRequired, EqualTo
+from app.models import User
 
 
 class LoginForm(FlaskForm):
     username = StringField('用户名：', validators=[DataRequired()])
     password = PasswordField('密码：', validators=[DataRequired()])
-    is_student = BooleanField('学生账号',validators=True)
     submit = SubmitField('Sign In')
 
 

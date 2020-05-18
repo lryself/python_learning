@@ -11,19 +11,18 @@ from flask import render_template, flash, redirect, session, url_for, request, g
 from flask_login import login_user, logout_user, current_user, login_required
 from app import app, db, oid
 from app.forms.login_registration import LoginForm
-from app.main.User import Userself
+from app.main.Userself import Userself
 
 @app.route('/login', methods=('GET', 'POST'))  # 登录
 def login():
     form = LoginForm()
+    ems=''
     if form.validate_on_submit():
         user_name = form.username.data
         password = form.password.data
-        is_student=form.is_student.data
-        ems=None
         if Userself.load(username=user_name, password=password): # 从用户数据中查找用户记录
-            user = Userself(user_name, password, is_student)  # 创建用户实体
-            login_user(user)  # 创建用户 Session
+            user = Userself(user_name, password)  # 创建用户实体
+            # login_user(user)  # 创建用户 Session
             return redirect(request.args.get('next') or url_for('index'))
         else:
             ems = "用户名或密码密码有误"

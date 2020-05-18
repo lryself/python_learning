@@ -7,7 +7,7 @@
 @Contact : lnolvwe@163.com
 """
 import unittest
-from User import Userself
+from Userself import Userself
 # here put the import lib
 
 class UserselfTest(unittest.TestCase):
@@ -17,11 +17,11 @@ class UserselfTest(unittest.TestCase):
         self.assertEqual(Userself.load(u1,u2),True)
 
     def testadd_class(self):
-        temp = Userself('stu1', '123456', 1)
+        temp = Userself('stu1', '123456')
         self.assertEqual(temp.add_class(1),True)
 
     def testdel_class(self):
-        temp = Userself('stu1', '123456', 1)
+        temp = Userself('stu1', '123456')
         self.assertEqual(temp.del_class(1),True)
 
 if __name__ == '__main__':

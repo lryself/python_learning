@@ -19,9 +19,11 @@ from flask_migrate import Migrate
 app = Flask(__name__)
 
 
-login = LoginManager()
-login.init_app(app)
-login.login_view = 'login'
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+login_manager.login_message_category = 'info'
+login_manager.login_message = 'Access denied.'
 oid = OpenID(app, os.path.join(basedir, 'tmp'))
 
 app.config.from_object(config)
@@ -29,5 +31,6 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 
-from app.forms import *
+from app.forms import login_registration
 from app.views import main, login
+from app import models

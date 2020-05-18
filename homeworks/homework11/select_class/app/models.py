@@ -1,17 +1,18 @@
 # coding: utf-8
-from datetime import datetime
-from app import db
-from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-import config
 
+from app import db
+import config
+from flask_login import UserMixin
 # here put the import lib
+
 
 class Classes(db.Model):
     '''
     课程表
     '''
     __tablename__ = 'class'
+    __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True, info='课程编号')
     name = db.Column(db.String(255, 'utf8_general_ci'), server_default=db.FetchedValue(), info='课程名称')
@@ -109,15 +110,16 @@ class Classes(db.Model):
 
 class StuChoose(db.Model):
     __tablename__ = 'stu_choose'
+    __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True, info='序号')
     user = db.Column(db.ForeignKey('users.name', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True, info='学生id')
     class_id = db.Column(db.ForeignKey('class.id', ondelete='CASCADE', onupdate='CASCADE'), nullable=False, index=True, info='课程id')
 
-    _class = db.relationship('Classes', primaryjoin='StuChoose.class_id == Classes.id', backref='stu_chooses')
-    user1 = db.relationship('User', primaryjoin='StuChoose.user == User.name', backref='stu_chooses')
+    _class = db.relationship('Classes', primaryjoin='StuChoose.class_id == Classes.id', backref='stu_chooses1')
+    user1 = db.relationship('User', primaryjoin='StuChoose.user == User.name', backref='stu_chooses2')
 
-    def add(self,*args) -> bool:
+    def add(self, *args) -> bool:
         '''
         添加选课信息
         :return: True为成功，False为失败
@@ -141,9 +143,9 @@ class StuChoose(db.Model):
         '''
         try:
             if word == 'user':
-                res = db.session.query(StuChoose).filter(StuChoose.user == value).all()
+                res = db.session.query(cls).filter(cls.user == value).all()
             elif word == 'class_id':
-                res = db.session.query(StuChoose).filter(StuChoose.class_id == int(value)).all()
+                res = db.session.query(cls).filter(cls.class_id == int(value)).all()
             else:
                 raise Exception
             return res
@@ -172,11 +174,12 @@ class StuChoose(db.Model):
             return False
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     '''
     用户表
     '''
     __tablename__ = 'users'
+    __table_args__ = {'extend_existing': True}
 
     name = db.Column(db.String(20), primary_key=True, info='用户名')
     password = db.Column(db.String(32), info='密码')
@@ -264,7 +267,7 @@ class User(db.Model):
     @classmethod
     def is_true_user(cls, name, password):
         try:
-            user = cls.find_stu(value=name)[0]
+            user = cls.find_stu(value=name)
             if password == user.password:
                 return True
             else:
@@ -274,18 +277,21 @@ class User(db.Model):
             print("判断执行失败！")
             return False
 
-    @property
-    def is_authenticated(self):
-        return True
+    @classmethod
+    def is_stu(cls, name):
+        try:
+            res = cls.find_stu(value=name)
+            if res.is_student == config.IS_STUDENT:
+                return config.IS_STUDENT
+            else:
+                return config.IS_NOT_STUDENT
+        except Exception as e:
+            print(e)
+            print("判断执行失败！")
+            return None
 
-    @property
-    def is_active(self):
-        return True
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
 
-    @property
-    def is_anonymous(self):
-        return False
-
-    def get_id(self):
-        return self.name
-
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
