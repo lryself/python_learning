@@ -7,11 +7,10 @@
 @Contact : lnolvwe@163.com
 题目：
 """
-from flask import render_template, flash, redirect, session, url_for, request, g
-from flask_login import login_user, logout_user, current_user, login_required
-from app import app, db, oid
+from flask import render_template, redirect, url_for, request
+from app import app
 from app.forms.login_registration import LoginForm
-from app.main.Userself import Userself
+from models.Userself import Userself
 
 @app.route('/login', methods=('GET', 'POST'))  # 登录
 def login():

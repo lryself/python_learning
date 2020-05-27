@@ -12,6 +12,6 @@ from models import User
 # here put the import lib
 
 
-@login.user_loader
+@login_manager.user_loader
 def load_user(name):
     return User.query.get(name)

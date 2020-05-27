@@ -7,7 +7,7 @@
 @Contact : lnolvwe@163.com
 """
 import unittest
-from Userself import Userself
+from models.Userself import Userself
 # here put the import lib
 
 class UserselfTest(unittest.TestCase):

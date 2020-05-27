@@ -14,9 +14,8 @@ from app import app
 
 @app.route('/')
 @app.route('/index')
-@login_required
+# @login_required
 def index():
-    user=
     posts = [
         {
             'author': {'username': 'John'},

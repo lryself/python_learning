@@ -8,7 +8,7 @@
 """
 from config import IS_STUDENT
 from werkzeug.security import generate_password_hash
-import app.models as models
+from models import UserModel, StuChooseModel, ClassesModel
 
 
 # here put the import lib
@@ -40,7 +40,7 @@ class Userself:
         self.username = name
         self.password = generate_password_hash(password)
         self.is_true_user = False
-        self.is_student = models.User.is_stu(name)
+        self.is_student = UserModel.User.is_stu(name)
         self.load_class_times(self)
 
     @staticmethod
@@ -51,7 +51,7 @@ class Userself:
         :param password: 密码
         :return: 登录结果
         '''
-        if models.User.is_true_user(name=username, password=password):
+        if UserModel.User.is_true_user(name=username, password=password):
             print("登录成功！")
             return True
         else:
@@ -65,10 +65,10 @@ class Userself:
         :return:
         '''
         self.class_times = [[[0 for cls in range(10)] for col in range(7)] for row in range(25)]
-        res = models.StuChoose.find_id(word='user', value=self.username)
+        res = StuChooseModel.StuChoose.find_id(word='user', value=self.username)
         if res:
             for i in res:
-                cls = models.Classes.find_class(word='id', value=i.class_id)[0]
+                cls = ClassesModel.Classes.find_class(word='id', value=i.class_id)[0]
                 cls_times = cls.time.split('|')
                 for j in range(cls.begin_week - 1, cls.end_week):
                     for w in cls_times:
@@ -84,10 +84,10 @@ class Userself:
         :param class_id: 课程编号
         :return: 选课结果
         '''
-        newclass = models.StuChoose()
+        newclass = StuChooseModel.StuChoose()
         newclass.user = self.username
         newclass.class_id = class_id
-        newclass_res = models.Classes.find_class(word='id', value=class_id)[0]
+        newclass_res = ClassesModel.Classes.find_class(word='id', value=class_id)[0]
         if newclass_res:
             cls_times = newclass_res.time.split('|')
             for j in range(newclass_res.begin_week - 1, newclass_res.end_week):
@@ -107,7 +107,7 @@ class Userself:
         :param class_id: 课程id
         :return: 删除结果
         '''
-        res = models.StuChoose.delete_class(cls_id=class_id, user=self.username)
+        res = StuChooseModel.StuChoose.delete_class(cls_id=class_id, user=self.username)
         return res
 
     def upd_password(self, oldpassword: str, newpassword: str) -> bool:
@@ -117,7 +117,7 @@ class Userself:
         :param newpassword: 新密码
         :return: 修改结果
         '''
-        res = models.User.update_stu(
+        res = UserModel.User.update_stu(
               
             stu_name=self.username,
             old_password=oldpassword,
@@ -129,7 +129,7 @@ class Userself:
             return False
 
     def find_allclass(self):
-        res = models.StuChoose.find_id(word='user', value=self.username)
+        res = StuChooseModel.StuChoose.find_id(word='user', value=self.username)
         if res:
             return res
         else:
@@ -147,7 +147,7 @@ class Userself:
         :param class_end_week: 课程结束周数
         :return: bool 添加结果
         '''
-        cls = models.Classes()
+        cls = ClassesModel.Classes()
         cls.name = class_name
         cls.teacher = class_teacher
         cls.time = class_time
@@ -163,7 +163,7 @@ class Userself:
         :param class_id: 课程id
         :return: 删除结果
         '''
-        res = models.Classes.delete_class(cls_id=class_id)
+        res = ClassesModel.Classes.delete_class(cls_id=class_id)
         return res
 
     @authentication
@@ -173,7 +173,7 @@ class Userself:
         :param args:
         :return: 修改结果
         '''
-        res = models.Classes.update_class(*args)
+        res = ClassesModel.Classes.update_class(*args)
         return res
 
     @staticmethod
@@ -181,7 +181,7 @@ class Userself:
         """根据用户ID获取用户实体，为 login_user 方法提供支持"""
         if not user_name:
             return None
-        return models.User.find_stu(value=user_name)
+        return UserModel.User.find_stu(value=user_name)
 
 
 

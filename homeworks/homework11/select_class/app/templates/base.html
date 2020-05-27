@@ -1,26 +1,60 @@
 <html>
-    <head>
-        {% if title %}
+<head>
+    {% if title %}
         <title>{{ title }} 的选课系统</title>
-        {% else %}
+    {% else %}
         <title>学生选课系统</title>
-        {% endif %}
-    </head>
-    <body>
-        <div>
-            <a href="{{ url_for('index') }}">首页</a>
-            <a href="{{ url_for('login') }}">登录</a>
+    {% endif %}
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div id="top">
+                <div id="topBar">
+                    <div class="userPanel">
+                        <ul>
+                            <li>
+                                <a rel="nofollow" href="#">手机版</a>
+                            </li>
+                            <li>
+                                <a rel="nofollow" href="#">设为首页</a>
+                            </li>
+                            <li>
+                                <a rel="nofollow" href="#">加入收藏</a>
+                            </li>
+                            <li>
+                                <a rel="nofollow" href="#">联系我们</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="welcome">
+                        欢迎光www.layoutit.cn 可视化布局！
+                    </div>
+                </div>
+
+            </div>
+            <hr>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+            <div id="footer">
+                <div class="footerNav">
+                    <a rel="nofollow" href="http://www.layoutit.cn">关于我们</a> | <a rel="nofollow" href="http://www.layoutit.cn">服务条款</a> | <a rel="nofollow" href="http://www.layoutit.cn">免责声明</a> | <a rel="nofollow" href="http://www.layoutit.cn">网站地图</a> | <a rel="nofollow" href="http://www.layoutit.cn">联系我们</a>
+                </div>
+                <div class="copyRight">
+                    Copyright ©2010-2014layoutit.cn 版权所有
+                </div>
+            </div>
         </div>
-        <hr>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        {% endwith %}
-        {% block content %}{% endblock %}
-    </body>
+    </div>
+</div>
+</body>
 </html>
