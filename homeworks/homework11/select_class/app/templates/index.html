@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>Hi, This is index.html!</h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
-    {% endfor %}
+    {% if text %}
+        <h2>{{ text }}</h2>
+    {% endif %}
 {% endblock %}

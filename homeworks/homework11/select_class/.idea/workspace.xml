@@ -30,7 +30,12 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a69a49d7-f0d7-4d9f-9b37-a304b18b71bd" name="Default Changelist" comment="" />
+    <list default="true" id="a69a49d7-f0d7-4d9f-9b37-a304b18b71bd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +74,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../select_class_new" />
     <property name="settings.editor.selected.configurable" value="PyConsoleConfigurable.Python Console" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -226,6 +231,8 @@
       <workItem from="1589880512346" duration="3118000" />
       <workItem from="1589933152087" duration="5762000" />
       <workItem from="1591704075091" duration="285000" />
+      <workItem from="1592099488461" duration="2553000" />
+      <workItem from="1592144860280" duration="636000" />
     </task>
     <task id="LOCAL-00001" summary="5月18日改善flask框架">
       <created>1589817370799</created>
@@ -283,26 +290,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="288" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1589817368098" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1591704341547">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1592145494816">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1591704341547" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1589941498759">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1592145494816" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1592145495878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589941498759" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1589941498758">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592145495878" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1592145495878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589941498758" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1589941498758">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1592145495878" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1592145495878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589941498758" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1589941498759">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1592145495878" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1592145495878">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589941498759" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592145495878" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1589812137491">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -340,11 +347,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/views/login.py</url>
-          <line>21</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/models/Userself.py</url>
           <line>54</line>
           <option name="timeStamp" value="12" />
@@ -363,7 +365,7 @@
     <SUITE FILE_PATH="coverage/select_class$User.coverage" NAME="User Coverage Results" MODIFIED="1589725983003" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/main" />
     <SUITE FILE_PATH="coverage/select_class$db_option.coverage" NAME="db_option Coverage Results" MODIFIED="1589629260136" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/main" />
     <SUITE FILE_PATH="coverage/select_class$Unittests_for_testUserself_UserselfTest_testload.coverage" NAME="Unittests for testUserself.UserselfTest.testload Coverage Results" MODIFIED="1589799946959" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
-    <SUITE FILE_PATH="coverage/select_class$run.coverage" NAME="run Coverage Results" MODIFIED="1589939690303" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/select_class$run.coverage" NAME="run Coverage Results" MODIFIED="1592145101656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/select_class$Unittests_in_testModels_py.coverage" NAME="Unittests in testModels.py Coverage Results" MODIFIED="1589799825910" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/select_class$testModels.coverage" NAME="testModels Coverage Results" MODIFIED="1589803512146" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/select_class$Unittests_for_testUserself_UserselfTest_testdel_class.coverage" NAME="Unittests for testUserself.UserselfTest.testdel_class Coverage Results" MODIFIED="1589724737709" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />

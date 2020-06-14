@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+    {% if text %}
+        <h1>{{ text }}</h1>
+    {% else %}
+        <h1>Hallo World!</h1>
+    {% endif %}
+{% endblock %}
