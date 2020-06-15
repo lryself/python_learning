@@ -176,15 +176,7 @@ class Userself:
         res = ClassesModel.Classes.update_class(*args)
         return res
 
-    @staticmethod
-    def get(user_name):
-        """根据用户ID获取用户实体，为 login_user 方法提供支持"""
-        if not user_name:
-            return None
-        return UserModel.User.find_stu(value=user_name)
+    @authentication
+    def additive_user(self, username, password):
+        return UserModel.User(username, password, 1).add()
 
-
-
-if __name__ == '__main__':
-    temp = Userself('stu1', '123456')
-    print(temp.add_class(1))

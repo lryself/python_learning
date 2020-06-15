@@ -5,8 +5,8 @@ from app import app, login_user
 from models.UserselfModel import Userself
 
 
-@app.route('/')
-@app.route('/login')
+@app.route('/', methods=('GET', 'POST'))
+@app.route('/login', methods=('GET', 'POST'))
 def login():
     form = LoginForm()
     ems=''
