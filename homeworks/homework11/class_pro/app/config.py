@@ -22,11 +22,13 @@ SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{user}:{password}@{host}:{port}/pytho
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 IS_STUDENT = 1
 IS_NOT_STUDENT = 0
-SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
-DEBUG = True
 
 # 加载数据库文件
 # flask-sqlacodegen --outfile=models.py mysql://temp2:Ll123456@"rm-2zekx3j75e3rv0k938o.mysql.rds.aliyuncs.com":3306/python_learn_selectclass?charset=utf8--flask
 
 # 导出第三方库
 # pip freeze >requirements.txt
+
+# 表单保护
+CSRF_ENABLED = True
+SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'

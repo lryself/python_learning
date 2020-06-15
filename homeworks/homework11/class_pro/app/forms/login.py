@@ -13,8 +13,8 @@ from wtforms.validators import ValidationError, DataRequired, EqualTo
 
 
 class LoginForm(FlaskForm):
-    username = StringField('用户名：', validators=[DataRequired()])
-    password = PasswordField('密码：', validators=[DataRequired()])
+    username = StringField('用户名：', validators=[DataRequired(message="用户名不能为空")])
+    password = PasswordField('密码：', validators=[DataRequired(message="密码不能为空")])
     submit = SubmitField('登录')
 
 
