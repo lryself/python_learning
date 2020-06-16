@@ -12,5 +12,4 @@ from wtforms import SubmitField
 
 
 class ClassFrom(FlaskForm):
-    re_index = SubmitField('返回主页')
-    
+    submit = SubmitField('选择')

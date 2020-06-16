@@ -1,14 +1,13 @@
 # -*- encoding: utf-8 -*-
 
 from flask import render_template
-from app import app, require_login
+from app import app
+from flask_login import login_required
 # here put the import lib
 
 
 @app.route('/', endpoint='index')
 @app.route('/index', endpoint='index')
-@require_login('index')
+@login_required
 def index():
-    text = "首页"
-    from app import user
-    return render_template('index.html', title=user.username, text=text)
+    return render_template('index.html')

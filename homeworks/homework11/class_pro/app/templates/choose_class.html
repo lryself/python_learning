@@ -2,8 +2,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div  style="text-align: center">
-        <table border="1">
+    <div style="text-align: center">
+        <table class="table" align="center" border="1" style="border-collapse: collapse; width: 100%">
+            <thead>
             <tr>
                 <th>编号</th>
                 <th>名称</th>
@@ -11,14 +12,19 @@
                 <th>时间</th>
                 <th>状态</th>
             </tr>
+            </thead>
+            <tbody>
             {% for i in classes %}
-            <tr>
-                <td>i.id</td>
-                <td>i.name</td>
-                <td>i.teacher</td>
-                <td>i.time</td>
-                <td>form.submit</td>
-            </tr>
+                <tr>
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.teacher }}</td>
+                    <td>{{ i.time }}</td>
+                    <td>{{ form.submit() }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
         </table>
     </div>
 {% endblock %}
+

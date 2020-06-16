@@ -2,9 +2,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% if text %}
-        <h1>{{ text }}</h1>
-    {% else %}
-        <h1>Hallo World!</h1>
-    {% endif %}
+    <div>
+        <table align="center">
+            <tr>
+                <td>
+                    <a href="/choose_class">选择课程</a>
+                </td>
+            </tr>
+        </table>
+    </div>
 {% endblock %}
