@@ -6,10 +6,12 @@
 @Version : 1.0
 @Contact : lnolvwe@163.com
 """
+from flask_login._compat import text_type
+
 from config import IS_STUDENT
 from werkzeug.security import generate_password_hash
 from models import UserModel, StuChooseModel, ClassesModel
-
+from flask_login import UserMixin
 
 # here put the import lib
 
@@ -34,14 +36,17 @@ def authentication(func):
     return aut1
 
 
-class Userself:
-    def __init__(self, name, password):
+class Userself(UserMixin):
+    def __init__(self, name):
         self.class_times = [[[0 for cls in range(10)] for col in range(7)] for row in range(25)]
         self.username = name
-        self.password = generate_password_hash(password)
+        self.password = UserModel.User.find_stu(value=name).password
         self.is_true_user = False
         self.is_student = UserModel.User.is_stu(name)
         self.load_class_times(self)
+
+    def get_id(self):
+        return text_type(self.username)
 
     @staticmethod
     def load(username, password) -> bool:

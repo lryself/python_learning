@@ -6,15 +6,13 @@
 @Version : 1.0
 @Contact : lnolvwe@163.com
 """
-from flask_login._compat import text_type
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import UserMixin
 from app import db
 import config
 # here put the import lib
 
 
-class User(db.Model, UserMixin):
+class User(db.Model):
     '''
     用户表
     '''
@@ -129,6 +127,3 @@ class User(db.Model, UserMixin):
 
     def set_password(self, password):
         self.password = generate_password_hash(password)
-
-    def get_id(self):
-        return text_type(self.name)
