@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+    <div style="margin: 0 auto;">
+        <table border="1" style="border-collapse: collapse;width:100%;text-align: center" >
+            <caption style="font-size: 30px"><strong>{{ username }}的课程表</strong></caption>
+            <tr>
+                <th>节数</th>
+                <th>星期一</th>
+                <th>星期二</th>
+                <th>星期三</th>
+                <th>星期四</th>
+                <th>星期五</th>
+                <th>星期六</th>
+                <th>星期天</th>
+            </tr>
+            {% for i in week_classes %}
+                <tr>
+                    {% for j in i %}
+                        <td>
+                            {% for w in j %}
+                                <p>{{ w }}</p>
+                            {% endfor %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+
+        <table class="table" align="center" border="1" style="border-collapse: collapse; width: 100%; text-align: center">
+            <caption ><strong>课程详情</strong></caption>
+            <thead>
+            <tr>
+                <th>代号</th>
+                <th>名称</th>
+                <th>教师</th>
+                <th>时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in classes %}
+                <tr>
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.teacher }}</td>
+                    <td>{{ i.time }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -97,6 +97,8 @@ class Userself(UserMixin):
         newclass.user = self.username
         newclass.class_id = class_id
         newclass_res = ClassesModel.Classes.find_class(word='id', value=class_id)[0]
+
+        # 判断是否与已选课程冲突
         if newclass_res:
             cls_times = newclass_res.time.split('|')
             for j in range(newclass_res.begin_week - 1, newclass_res.end_week):
@@ -166,7 +168,7 @@ class Userself(UserMixin):
         return res
 
     @authentication
-    def delete_class(self, class_id: int) -> bool:
+    def delete_class(self, class_id: str) -> bool:
         '''
         管理员删除课程信息
         :param class_id: 课程id

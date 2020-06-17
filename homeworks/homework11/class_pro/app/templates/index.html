@@ -4,11 +4,25 @@
 {% block content %}
     <div>
         <table align="center">
-            <tr>
-                <td>
-                    <a href="/choose_class">选择课程</a>
-                </td>
-            </tr>
+            {% if is_student == 1 %}
+                <tr>
+                    <td>
+                        <a href="/choose_class">选择课程</a>
+                    </td>
+                    <td>
+                        <a href="/self_class"> | 我的课程表</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td>
+                        <a href="/auth_class">管理课程</a>
+                    </td>
+                    <td>
+                        <a href="/auth_user"> | 管理人员</a>
+                    </td>
+                </tr>
+            {% endif %}
         </table>
     </div>
 {% endblock %}

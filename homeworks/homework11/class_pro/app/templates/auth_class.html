@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+    <div style="text-align: center">
+        <table class="table" align="left" border="1" style="border-collapse: collapse; width: 70%">
+            <thead>
+            <tr>
+                <th>代号</th>
+                <th>名称</th>
+                <th>教师</th>
+                <th>时间</th>
+                <th>状态</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in classes %}
+                <tr>
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.teacher }}</td>
+                    <td>{{ i.time }}</td>
+                    <td>{{ i.choose }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div style="margin: auto 0; position: fixed; text-align: left; right: 5%;top: 10%">
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <p style="color: red">注意：删除课程只需要填写课程编号</p>
+                <p style="color: red">注意：添加课程需要填写除课程编号以外的所有信息</p>
+                <p>{{ form.class_id.label }}</p>
+                <p>{{ form.class_id(size=32) }}</p>
+                <p>{{ form.class_name.label }}</p>
+                <p>{{ form.class_name(size=32) }}</p>
+                <p>{{ form.class_teacher.label }}</p>
+                <p>{{ form.class_teacher(size=32) }}</p>
+                <p>{{ form.class_time.label }}</p>
+                <p>例：周一第一节和周一第二节是1_1|1_2</p>
+                <p>{{ form.class_time(size=32) }}</p>
+                <p>{{ form.class_begin_week.label }}</p>
+                <p>{{ form.class_begin_week(size=32) }}</p>
+                <p>{{ form.class_end_week.label }}</p>
+                <p>{{ form.class_end_week(size=32) }}</p>
+                <p>{{ form.submit() }} {{ form.del_class() }}</p>
+            </form>
+            <br>
+            <p>
+                {%for message in get_flashed_messages()%}
+                    <div class="alert alert-warning">
+                        <p style="color: red">
+                            {{message}}
+                        </p>
+                    </div>
+                {%endfor%}
+            </p>
+        </div>
+    </div>
+{% endblock %}

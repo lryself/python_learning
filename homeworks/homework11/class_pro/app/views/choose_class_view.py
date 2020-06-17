@@ -35,23 +35,22 @@ def choose_class():
             else:
                 flash('{}课程退选失败！'.format(class_id))
         return redirect(url_for('choose_class'))
-    classes=[]
-    temp=Classes.find_class('all')
-    weekday=["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+    classes = []
+    temp = Classes.find_class('all')
+    weekday = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
     for i in temp:
-        times=i.time.split("|")
-        time_str=''
+        times = i.time.split("|")
+        time_str = ''
         for j in times:
-            time_str+='{} 第{}节\n'.format(weekday[int(j[0])], j[2])
+            time_str += '{} 第{}节\n'.format(weekday[int(j[0])], j[2])
         if i.id in current_user.classes:
-            temp_str='已选'
+            temp_str = '已选'
         else:
-            temp_str='未选'
-        temp_dir={'id': i.id,
-                  'name': i.name,
-                  'teacher': i.teacher,
-                  'time': '第{}周-第{}周 {}'.format(i.begin_week, i.end_week, time_str),
-                  'choose': temp_str
-                  }
+            temp_str = '未选'
+        temp_dir = {'id': i.id,
+                    'name': i.name,
+                    'teacher': i.teacher,
+                    'time': '第{}周-第{}周 {}'.format(i.begin_week, i.end_week, time_str),
+                    'choose': temp_str}
         classes.append(temp_dir)
     return render_template('choose_class.html', classes=classes, form=form)
