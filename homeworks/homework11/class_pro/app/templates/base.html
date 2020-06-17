@@ -9,20 +9,16 @@
     {% endif %}
 </head>
 <body>
-    <div id="header">
-        <div style="text-align: center">
-            <h2>欢迎使用学生成绩管理系统!</h2>
-        </div>
+    <div id="header" style="text-align: center">
+        <h2>欢迎使用学生成绩管理系统!</h2>
+    </div>
+    <div id="reindex" style="text-align: center; margin: 0 auto">
+        <a rel="nofollow" href="/">返回首页</a>
     </div>
     <br>
+
     <div id="container">
         {% block content %}{% endblock %}
-    </div>
-    <br>
-    <div id="footer">
-        <div style="text-align: center">
-            <a rel="nofollow" href="/">返回首页</a>
-        </div>
     </div>
 </body>
 </html>

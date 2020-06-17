@@ -7,9 +7,8 @@
 @Contact : lnolvwe@163.com
 """
 from flask_login._compat import text_type
-
 from config import IS_STUDENT
-from werkzeug.security import generate_password_hash
+from app import login_manager
 from models import UserModel, StuChooseModel, ClassesModel
 from flask_login import UserMixin
 
@@ -19,7 +18,8 @@ from flask_login import UserMixin
 def end_update(func):
     def end_update1(*args, **kwargs):
         res = func(*args, **kwargs)
-        Userself.load_class_times(args[0])
+        # Userself.load_class_times(args[0])
+        load_user(args[0].username)
         return res
 
     return end_update1
@@ -43,6 +43,7 @@ class Userself(UserMixin):
         self.password = UserModel.User.find_stu(value=name).password
         self.is_true_user = False
         self.is_student = UserModel.User.is_stu(name)
+        self.classes=[]
         self.load_class_times(self)
 
     def get_id(self):
@@ -73,6 +74,7 @@ class Userself(UserMixin):
         res = StuChooseModel.StuChoose.find_id(word='user', value=self.username)
         if res:
             for i in res:
+                self.classes.append(i.class_id)
                 cls = ClassesModel.Classes.find_class(word='id', value=i.class_id)[0]
                 cls_times = cls.time.split('|')
                 for j in range(cls.begin_week - 1, cls.end_week):
@@ -89,6 +91,8 @@ class Userself(UserMixin):
         :param class_id: 课程编号
         :return: 选课结果
         '''
+        if class_id in self.classes:
+            return False
         newclass = StuChooseModel.StuChoose()
         newclass.user = self.username
         newclass.class_id = class_id
@@ -185,3 +189,8 @@ class Userself(UserMixin):
     def additive_user(self, username, password):
         return UserModel.User(username, password, 1).add()
 
+
+@login_manager.user_loader
+def load_user(user_id):
+    user = Userself(user_id)
+    return user

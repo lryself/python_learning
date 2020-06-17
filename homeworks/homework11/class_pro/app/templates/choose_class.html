@@ -3,10 +3,10 @@
 
 {% block content %}
     <div style="text-align: center">
-        <table class="table" align="center" border="1" style="border-collapse: collapse; width: 100%">
+        <table class="table" align="left" border="1" style="border-collapse: collapse; width: 70%">
             <thead>
             <tr>
-                <th>编号</th>
+                <th>代号</th>
                 <th>名称</th>
                 <th>教师</th>
                 <th>时间</th>
@@ -20,11 +20,30 @@
                     <td>{{ i.name }}</td>
                     <td>{{ i.teacher }}</td>
                     <td>{{ i.time }}</td>
-                    <td>{{ form.submit() }}</td>
+                    <td>{{ i.choose }}</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
+        <div style="margin: auto 0; position: fixed; text-align: left; right: 5%;top: 10%">
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+
+                <p>{{ form.class_id.label }}</p>
+                <p>{{ form.class_id(size=32) }}</p>
+                <p>{{ form.submit() }} {{ form.del_class() }}</p>
+            </form>
+            <br>
+            <p>
+                {%for message in get_flashed_messages()%}
+                    <div class="alert alert-warning">
+                        <p style="color: red">
+                            {{message}}
+                        </p>
+                    </div>
+                {%endfor%}
+            </p>
+        </div>
     </div>
 {% endblock %}
 
