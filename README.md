@@ -26,3 +26,5 @@
 * id: rj1801lry
 * password:lry12345678
 * 端口：3306
+
+### 大作业在 /homeworks/homework11 中，51job_spider为爬虫项目，class_pro为web开发项目
