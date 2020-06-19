@@ -36,11 +36,14 @@ def auth_user():
             else:
                 flash('{}用户添加失败！'.format(username))
         if form.del_user.data:
-            res = current_user.delete_user(username)
-            if res:
-                flash('{}用户删除成功！'.format(username))
+            if username != current_user.username:
+                res = current_user.delete_user(username)
+                if res:
+                    flash('{}用户删除成功！'.format(username))
+                else:
+                    flash('{}用户删除失败！'.format(username))
             else:
-                flash('{}用户删除失败！'.format(username))
+                flash('不可删除自己！')
         return redirect(url_for('auth_user'))
     users = User.find_stu('all')
     users = sorted(users, key=lambda x: x.is_student)

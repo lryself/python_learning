@@ -36,14 +36,13 @@ def authentication(func):
     return aut1
 
 
-class Userself(UserMixin):
+class Userself(UserMixin):  #继承flask_login的UserMixin
     def __init__(self, name):
-        self.class_times = [[[0 for cls in range(10)] for col in range(7)] for row in range(25)]
-        self.username = name
-        self.password = UserModel.User.find_stu(value=name).password
-        self.is_true_user = False
-        self.is_student = UserModel.User.is_stu(name)
-        self.classes=[]
+        self.class_times = [[[0 for cls in range(10)] for col in range(7)] for row in range(25)] #现有课程的时间[周数][天数][节数]
+        self.username = name #用户名
+        self.password = UserModel.User.find_stu(value=name).password #用户密码
+        self.is_student = UserModel.User.is_stu(name) #用户权限
+        self.classes=[] #已报课程
         self.load_class_times(self)
 
     def get_id(self):
