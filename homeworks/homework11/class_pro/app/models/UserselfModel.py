@@ -188,8 +188,16 @@ class Userself(UserMixin):
         return res
 
     @authentication
-    def additive_user(self, username, password):
-        return UserModel.User(username, password, 1).add()
+    def additive_user(self, username, password, is_student):
+        user = UserModel.User()
+        user.name = username
+        user.password = password
+        user.is_student = is_student
+        return user.add()
+
+    @authentication
+    def delete_user(self, username):
+        return UserModel.User.delete_stu(username)
 
 
 @login_manager.user_loader

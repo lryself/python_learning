@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+    <div style="text-align: center">
+        <table class="table" align="left" border="1" style="border-collapse: collapse; width: 70%">
+            <thead>
+            <tr>
+                <th>用户名</th>
+                <th>身份</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in users %}
+                <tr>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.is_student }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div style="margin: auto 0; position: fixed; text-align: left; right: 5%;top: 10%">
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <p style="color: red">注意：删除用户只需要填写用户名即可</p>
+                <p style="color: red">注意：添加用户需要填写所有信息</p>
+                <p>{{ form.name.label }}</p>
+                <p>{{ form.name(size=32) }}</p>
+                <p>{{ form.password.label }}</p>
+                <p>{{ form.password(size=32) }}</p>
+                <p>{{ form.is_student.label }} {{ form.is_student}}</p>
+                <p>{{ form.submit() }} {{ form.del_user() }}</p>
+            </form>
+            <br>
+            <p>
+                {%for message in get_flashed_messages()%}
+                    <div class="alert alert-warning">
+                        <p style="color: red">
+                            {{message}}
+                        </p>
+                    </div>
+                {%endfor%}
+            </p>
+        </div>
+    </div>
+{% endblock %}

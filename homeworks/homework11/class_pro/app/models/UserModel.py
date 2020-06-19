@@ -23,7 +23,7 @@ class User(db.Model):
     password = db.Column(db.String(255), info='密码')
     is_student = db.Column(db.Integer, nullable=False, server_default=db.FetchedValue(), info='1为学生账号，0为管理员账号')
 
-    def add(self,*args) -> bool:
+    def add(self, *args) -> bool:
         '''
         添加账号
         :return: True为成功，False为失败
@@ -38,7 +38,7 @@ class User(db.Model):
             return False
 
     @classmethod
-    def find_stu(cls,word='name', value='', *args):
+    def find_stu(cls, word='name', value='', *args):
         '''
         查找账号
         :param word: 查询字段，name：用户名，is_student:学生账号
@@ -50,6 +50,8 @@ class User(db.Model):
                 res = db.session.query(User).filter(User.name == value).all()[0]
             elif word == 'is_student':
                 res = db.session.query(User).filter(User.is_student == int(value)).all()
+            elif word == 'all':
+                res = db.session.query(User).all()
             else:
                 raise Exception
             return res
@@ -59,19 +61,15 @@ class User(db.Model):
             return None
 
     @classmethod
-    def delete_stu(cls,user_name , user_password) -> bool:
+    def delete_stu(cls, user_name) -> bool:
         '''
         删除账号
-        :param user_password: 用户密码
         :param user_name: 要删除的账号用户名
         :return: True为成功，False为失败
         '''
         try:
-            user = cls.find_stu(value=user_name)[0]
-            if user.password == user_password:
-                db.session.delete(user)
-            else:
-                return False
+            user = cls.find_stu(value=user_name)
+            db.session.delete(user)
             db.session.commit()
             return True
         except Exception as e:

@@ -17,7 +17,7 @@ from flask_login import login_required, current_user
 
 @app.route('/auth_class', methods=('GET', 'POST'), endpoint='auth_class')
 @login_required
-def choose_class():
+def auth_class():
     form = ClassFrom()
     if form.validate_on_submit():
         class_id=form.class_id.data
@@ -55,8 +55,7 @@ def choose_class():
         temp_dir = {'id': i.id,
                     'name': i.name,
                     'teacher': i.teacher,
-                    'time': '第{}周-第{}周 {}'.format(i.begin_week, i.end_week, time_str),
-                    'choose': '正常'
+                    'time': '第{}周-第{}周 {}'.format(i.begin_week, i.end_week, time_str)
                     }
         classes.append(temp_dir)
     return render_template('auth_class.html', classes=classes, form=form)
