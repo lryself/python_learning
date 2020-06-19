@@ -34,7 +34,7 @@
 * run.py --项目运行入口
 ### 2.4 数据库设计：
 
-![image](https://test-lry.oss-cn-beijing.aliyuncs.com/image/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9B%BE%E7%A4%BA.png?Expires=1592556705&OSSAccessKeyId=TMP.3KdjosWJhTmyZnJXm3zxfgzyf1S2SehfzGqsWniM3HUCJ6Xocim2xvQQMhhjrmEphs5jLzjdGaomRFoumJ6wLn5j3CXJLe&Signature=6VtqZfKq41EIXsAIumS12qlL6WM%3D)
+![Image text](https://gitee.com/lryself/python_learning/blob/master/homeworks/homework11/class_pro/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9B%BE%E7%A4%BA.png)
 
 * 数据库中共有3个表
 	* class --所有的课程
