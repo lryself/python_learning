@@ -5,7 +5,7 @@ from forms.login_form import LoginForm
 from flask import render_template, flash, redirect, url_for, g, request
 from models.UserselfModel import Userself
 from app import app
-from flask_login import login_user,logout_user, login_required
+from flask_login import login_user, logout_user
 
 
 @app.route('/login', methods=('GET', 'POST'), endpoint='login')
@@ -22,12 +22,11 @@ def login():
                 next_url = url_for('index')
             return redirect(next_url)
         else:
-            flash('用户名或密码密码有误')
+            flash('用户名或密码有误')
     return render_template('login_in.html', form=form)
 
 
 @app.route('/logout')
-@login_required
 def logout():
     logout_user()
     return redirect('/')

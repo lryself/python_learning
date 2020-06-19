@@ -3,19 +3,55 @@
 <head>
     <meta charset="UTF-8">
     {% if title %}
-        <title>{{ title }} 的选课系统</title>
+        <title>{{ title }}</title>
     {% else %}
         <title>学生选课系统</title>
     {% endif %}
+    <style>
+        .form-fix{
+            margin: auto 0;
+            position:fixed;
+            text-align: left;
+            right: 5%;
+            top: 8%;
+        }
+        .form-table{
+            border-collapse: collapse;
+            width: 70%;
+        }
+        .header-nav ul{
+            list-style-type: none;
+            text-align: right;
+        }
+        .header-nav li{
+            margin-right:2%;  /* 两个li之间的距离*/
+            float: right;
+        }
+        .index{
+            text-align: center;
+        }
+        .index span{
+            margin-right: 2%;
+        }
+        .index button{
+            font-size: larger;
+        }
+    </style>
 </head>
 <body>
-    <div id="header" style="text-align: center">
-        <h2>欢迎使用学生成绩管理系统!</h2>
-    </div>
-    <div id="urls" style="text-align: center; margin: 0 auto">
-        <a rel="nofollow" href="/">返回首页</a>|<a rel="nofollow" href="/logout">退出登录</a>
+    <div class="header-nav">
+        <ul>
+            <li style="float: left;font-size: 20px"><b>欢迎使用学生课程管理系统!</b></li>
+            <li>
+                <a href="/">返回首页</a>
+            </li>
+            <li>
+                <a href="/logout">退出登录</a>
+            </li>
+        </ul>
     </div>
     <br>
+    <hr>
 
     <div id="container">
         {% block content %}{% endblock %}

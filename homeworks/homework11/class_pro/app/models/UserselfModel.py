@@ -128,15 +128,10 @@ class Userself(UserMixin):  #继承flask_login的UserMixin
         :return: 修改结果
         '''
         res = UserModel.User.update_stu(
-              
             stu_name=self.username,
             old_password=oldpassword,
             new_password=newpassword)
-        if res:
-            self.password = newpassword
-            return True
-        else:
-            return False
+        return res
 
     def find_allclass(self):
         res = StuChooseModel.StuChoose.find_id(word='user', value=self.username)

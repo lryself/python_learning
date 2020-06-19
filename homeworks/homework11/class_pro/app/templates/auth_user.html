@@ -3,7 +3,7 @@
 
 {% block content %}
     <div style="text-align: center">
-        <table class="table" align="left" border="1" style="border-collapse: collapse; width: 70%">
+        <table class="form-table" align="left" border="1">
             <thead>
             <tr>
                 <th>用户名</th>
@@ -19,7 +19,7 @@
             {% endfor %}
             </tbody>
         </table>
-        <div style="margin: auto 0; position: fixed; text-align: left; right: 5%;top: 10%">
+        <div class="form-fix">
             <form action="" method="post" novalidate>
                 {{ form.hidden_tag() }}
                 <p style="color: red">注意：删除用户只需要填写用户名即可</p>

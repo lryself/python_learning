@@ -20,5 +20,6 @@ login_manager.login_message = '请登录！'
 login_manager.init_app(app)
 
 from flask import redirect, url_for
-from app.views import login_view, index, choose_class_view, self_class_view, auth_class_view, auth_user_view
+from app.views import login_view, index, choose_class_view, self_class_view, auth_class_view, auth_user_view, \
+    change_password_view
 from app import models

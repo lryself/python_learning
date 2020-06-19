@@ -78,7 +78,7 @@ class User(db.Model):
             return False
 
     @classmethod
-    def update_stu(cls,stu_name, old_password, new_password, *args) -> bool:
+    def update_stu(cls, stu_name, old_password, new_password, *args) -> bool:
         '''
         更新账号密码
         :param stu_name: 用户名
@@ -88,9 +88,9 @@ class User(db.Model):
         '''
         try:
             # 创建Query查询，filter是where条件，最后调用one()返回唯一行，如果调用all()则返回所有行:
-            user = cls.find_stu(value=stu_name)[0]
-            if user.password == old_password:
-                user.password = new_password
+            user = cls.find_stu(value=stu_name)
+            if check_password_hash(user.password, old_password):
+                user.password = generate_password_hash(new_password)
             else:
                 return False
             db.session.commit()

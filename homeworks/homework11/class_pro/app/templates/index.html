@@ -2,27 +2,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div>
-        <table align="center">
-            {% if is_student == 1 %}
-                <tr>
-                    <td>
-                        <a href="/choose_class">选择课程</a>
-                    </td>
-                    <td>
-                        <a href="/self_class"> | 我的课程表</a>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td>
-                        <a href="/auth_class">管理课程</a>
-                    </td>
-                    <td>
-                        <a href="/auth_user"> | 管理人员</a>
-                    </td>
-                </tr>
-            {% endif %}
-        </table>
+    <br>
+    <div class="index">
+        <span>
+            <a href="/change_password"><button>修改密码</button></a>
+        </span>
+        {% if is_student == 1 %}
+            <span>
+                <a href="/choose_class"><button>选择课程</button></a>
+            </span>
+            <span>
+                <a href="/self_class"><button>我的课程表</button></a>
+            </span>
+        {% else %}
+            <span>
+                <a href="/auth_class"><button>管理课程</button></a>
+            </span>
+            <span>
+                <a href="/auth_user"><button>管理人员</button></a>
+            </span>
+        {% endif %}
     </div>
 {% endblock %}
