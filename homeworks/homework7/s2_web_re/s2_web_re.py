@@ -12,7 +12,7 @@
 import requests
 import re
 import os
-import tools
+import homeworks.homework7.s2_web_re.tools
 import urllib
 from bs4 import BeautifulSoup
 # here put the import lib
