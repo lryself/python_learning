@@ -6,9 +6,6 @@
 @Version : 1.0
 @Contact : lnolvwe@163.com
 """
-from tools_main import cur_file_dir
-import os
-os.chdir(cur_file_dir())
 import requests
 from lxml import etree
 # here put the import lib

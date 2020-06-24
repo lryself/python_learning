@@ -28,3 +28,4 @@
 * 端口：3306
 
 ### 大作业在 /homeworks/homework11 中，51job_spider为爬虫项目，class_pro为web开发项目
+### 请老师在检查作业的时候如果遇到README.md文件，一定要阅读，其中可能会提示您一些注意事项
