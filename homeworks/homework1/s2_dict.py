@@ -10,7 +10,6 @@
 '''
 import random
 # here put the import lib
-
 stus={}
 for i in range(202000, 202010):
     stus[i]=random.randint(60, 100)

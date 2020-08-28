@@ -12,7 +12,6 @@
 
 # here put the import lib
 
-
 def sum_all(l):
     sum = 0
     for i in l:
@@ -20,8 +19,9 @@ def sum_all(l):
     return sum
 
 
-list1 = input("请输入n个数字，用逗号隔开:").split(",")
-list2 = []
-for i in list1:
-    list2.append(int(i))
-print(sum_all(list2))
+if __name__ == '__main__':
+    list1 = input("请输入n个数字，用逗号隔开:").split(",")
+    list2 = []
+    for i in list1:
+        list2.append(int(i))
+    print(sum_all(list2))
