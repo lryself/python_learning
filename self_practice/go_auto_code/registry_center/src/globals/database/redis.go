@@ -1,0 +1,26 @@
+package database
+
+import (
+	"registry_center/src/globals/vipers"
+	"github.com/go-redis/redis"
+)
+
+var (
+	redisClient *redis.Client
+)
+
+func InitRedisClient() (err error) {
+	v := vipers.GetDatabaseViper()
+	redisClient = redis.NewClient(&redis.Options{
+		Addr:     v.GetString("redis.addr"),
+		Password: v.GetString("redis.password"),
+		DB:       v.GetInt("redis.DB"),
+	})
+	_, err = redisClient.Ping().Result()
+	return
+	// Output: PONG <nil>
+}
+
+func GetRedisManager() *redis.Client {
+	return redisClient
+}

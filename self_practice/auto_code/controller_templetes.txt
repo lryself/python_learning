@@ -1,0 +1,124 @@
+from ..models.{{model_file_name}} import {{class_name}} as _{{class_name}}
+
+from flask import current_app
+from ..models import db
+from ..utils.commons import fPrint_id_by_time, query_to_dict
+from ..utils.response_code import *
+
+
+class {{class_name}}Controller(_{{class_name}}):
+    @classmethod
+    def add(cls, **kwargs):
+{{all_args}}
+        filter_list = []
+{{all_filter}}
+        # 检查是否有重复的邮箱
+        try:
+            result_model = db.session.query(cls).filter(*filter_list)
+        except Exception as e:
+            current_app.logger.error(e)
+            return code_db_error(e)
+
+        if result_model.first():
+            return code_has_data()
+
+        new_id = fPrint_id_by_time()
+        # 生成用户id 插入信息到表里
+        try:
+            NewModel = cls.__call__(
+{{all_attrs}}            )
+            db.session.add(NewModel)
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            current_app.logger.error(e)
+            return code_db_error(e)
+
+        return code_ok()
+
+    @classmethod
+    def delete(cls, **kwargs):
+{{all_args}}
+        filter_list = []
+{{all_filter}}
+        try:
+            result_model = db.session.query(cls).filter(*filter_list)
+        except Exception as e:
+            current_app.logger.error(e)
+            return code_db_error(e)
+
+        if not result_model.first():
+            return code_none_data()
+
+        try:
+            result_model.delete()
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            current_app.logger.error(e)
+            return code_db_error(e)
+
+        result = query_to_dict(result_model.first())
+        return code_ok(data=result)
+
+    @classmethod
+    def update(cls, **kwargs):
+{{all_args}}
+
+        filter_list = []
+{{all_filter}}
+        try:
+            result_model = db.session.query(cls).filter(*filter_list)
+        except Exception as e:
+            current_app.logger.error(e)
+            return code_db_error(e)
+
+        if not result_model.first():
+            return code_none_data()
+
+        args = {}
+{{all_update_attrs}}
+        try:
+            result_model.update(args)
+            db.session.commit()
+        except Exception as e:
+            db.session.rollback()
+            current_app.logger.error(e)
+            return code_db_error(e)
+
+        result = query_to_dict(result_model.first())
+        return code_ok(data=result)
+
+    @classmethod
+    def get(cls, **kwargs):
+{{all_args}}
+        filter_list = []
+{{all_filter}}
+        try:
+            result_model = db.session.query(cls).filter(*filter_list)
+        except Exception as e:
+            current_app.logger.error(e)
+            return code_db_error(e)
+
+        if not result_model.first():
+            return code_none_data()
+
+        result = query_to_dict(result_model.first())
+        return code_ok(data=result)
+
+    @classmethod
+    def get_list(cls, **kwargs):
+{{all_args}}
+        filter_list = []
+{{all_filter}}
+        try:
+            result_model = db.session.query(cls).filter(*filter_list)
+        except Exception as e:
+            current_app.logger.error(e)
+            return code_db_error(e)
+
+        if not result_model.first():
+            return code_none_data()
+
+        result = query_to_dict(result_model.all())
+        return code_ok(data=result)

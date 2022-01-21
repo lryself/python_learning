@@ -10,9 +10,9 @@
 # here put the import lib
 '''题目：将这4中方式实现的代码分别在vscode上练习一下; 观察输出结果
 '''
-username = input('username:') 
-password = input('password:') 
-print(username,password)
+username = input('username:')
+password = input('password:')
+print(username, password)
 
 # name = input("name:") 
 # age = input("age:") 

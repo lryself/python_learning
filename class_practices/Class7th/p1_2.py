@@ -8,6 +8,7 @@
 题目：
 '''
 from p1_1 import fib
+
 # here put the import lib
 if __name__ == "__main__":
-    fib(0,1,200)
+    fib(0, 1, 10000)

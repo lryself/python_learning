@@ -10,10 +10,10 @@
 # here put the import lib
 '''题目：找质数
 '''
-for a in range(30,40):
-    for x in range(2,a):
-        if(a%x==0):
-            print(a,"=",x,"*",a//x)
-            print(a,"不是质数")
+for a in range(30, 40):
+    for x in range(2, a):
+        if (a % x == 0):
+            print(a, "=", x, "*", a // x)
+            print(a, "不是质数")
     else:
-        print(a,"是质数")
+        print(a, "是质数")

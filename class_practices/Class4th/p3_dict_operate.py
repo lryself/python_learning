@@ -10,12 +10,12 @@
 # here put the import lib
 '''题目：字典的元素的增加, 修改,删除;并观察输出
 '''
-stu1={'id':'11111','name':'Tom','class':1,'age':20}
-stu2={'id':'22222','name':'李明','class':2,'age':20}
-stu3={'id':'33333','name':'李华','class':3,'age':20}
-stu1['school']='univercity'
+stu1 = {'id': '11111', 'name': 'Tom', 'class': 1, 'age': 20}
+stu2 = {'id': '22222', 'name': '李明', 'class': 2, 'age': 20}
+stu3 = {'id': '33333', 'name': '李华', 'class': 3, 'age': 20}
+stu1['school'] = 'univercity'
 del stu2['id']
-stu3['name']="李晓华"
+stu3['name'] = "李晓华"
 print(stu1)
 print(stu2)
 print(stu3)

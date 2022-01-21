@@ -11,8 +11,8 @@
 
 '''题目：用列表定义10个同学的成绩,输出最高分,最低分,总分和平均值;
 '''
-scores=[90,91,92,93,94,95,96,97,98,99]
+scores = [90, 91, 92, 93, 94, 95, 96, 97, 98, 99]
 print(max(scores))
 print(min(scores))
 print(sum(scores))
-print(sum(scores)/len(scores))
+print(sum(scores) / len(scores))

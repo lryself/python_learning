@@ -8,11 +8,13 @@
 题目：
 '''
 
+
 # here put the import lib
-def fib(a,b,c):
-    print(a,end=" ")
-    if b<c :
-        fib(b,a+b,c)
+def fib(a, b, c):
+    print(a, end=" ")
+    if b < c:
+        fib(b, a + b, c)
+
 
 if __name__ == "__main__":
-    fib(0,1,100)
+    fib(0, 1, 100)

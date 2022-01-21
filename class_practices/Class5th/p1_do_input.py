@@ -10,6 +10,6 @@
 # here put the import lib
 '''题目：将控制台输入的字符串,转换成元组, 并输出显示;
 '''
-str=input("请输入一个字符串：")
-s=tuple(str)
+str = input("请输入一个字符串：")
+s = tuple(str)
 print(s)
