@@ -228,7 +228,7 @@ from . import db
 
 
 if __name__ == '__main__':
-    cmd = 'flask-sqlacodegen mysql+pymysql://lryself:lpc123LPC@rm-2zekx3j75e3rv0k938o.mysql.rds.aliyuncs.com:3306/school_dachaung?charset=utf8 --outfile "models/models.py"  --flask'
+    cmd = 'flask-sqlacodegen mysql+pymysql://XXX:XXX@rm-2zekx3j75e3rv0k938o.mysql.rds.aliyuncs.com:3306/school_dachaung?charset=utf8 --outfile "models/models.py"  --flask'
     for c in read_all_object(cmd=cmd):
         make_manager_service_code(c)
     print("创建文件完成！")

@@ -52,7 +52,7 @@ def combat(video_name):
 
 
 if __name__ == '__main__':
-    url = "http://19-12.b.cdn13.com/hls/bsd/4000/sd/4000/016/556/803/480p.h264.mp4/index-v1-a1.m3u8?cdn_hash=7471656a7f26cf4e31b16fcc9201d350&cdn_creation_time=1637703092&cdn_ttl=14400&cdn_cv_data=2001%3Ada8%3A20c%3Aa010%3A5d9b%3Aa6cd%3A300f%3Ad1f5-ew"
+    url = "XXX"
 
     video_hash = re.search("hash=[0-9a-z]+", url).group()[5:]
     video_path = "video/" + video_hash
