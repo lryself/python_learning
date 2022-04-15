@@ -7,9 +7,9 @@ import re
 
 
 if __name__ == '__main__':
-    project_name = "registry_center"
+    project_name = "sso_center"
     rep_dir = {
-        "{{project_name}}": project_name
+        "${{project_name}}": project_name
     }
 
     def pathLoad(p) -> str:

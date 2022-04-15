@@ -1,0 +1,16 @@
+version: "3"
+services:
+  ${{project_name}}:
+    privileged: true
+    stdin_open: true
+    tty: true
+    build: .
+    image: ${{project_name}}
+#    container_name: registry_center
+    restart: always
+    volumes:
+      - /docker/${{project_name}}/configs:/apps/configs
+    ports:
+      - "9001:9001"
+    command:
+      - /apps/golang_app

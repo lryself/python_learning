@@ -32,7 +32,7 @@ def get_html(html_url):
     # option.add_argument('headless')
     option.add_experimental_option('excludeSwitches', ['enable-automation'])
     option.add_experimental_option('useAutomationExtension', False)
-    browser = webdriver.Chrome(executable_path="D:\download\chromedriver.exe", options=option)
+    browser = webdriver.Chrome(executable_path="F:\programme\chromedriver.exe", options=option)
     browser.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument',
                             {'source': 'Object.defineProperty(navigator, "webdriver", {get: () =>undefined})'})
 
