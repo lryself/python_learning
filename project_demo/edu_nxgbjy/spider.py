@@ -18,8 +18,6 @@ def main(html_url):
 
     browser.maximize_window()
     browser.get(html_url)
-    # 640102197303290316
-    # ljg729KYL!
     browser.find_element_by_xpath(f'//*[@id="name"]').send_keys("xxx")
     browser.find_element_by_xpath(f'//*[@id="jpassword"]').send_keys("xxx")
     verifycode = input("请输入验证码！")
